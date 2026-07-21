@@ -328,7 +328,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, initialMode 
                         </span>
                         <h3 className="text-2xl font-display font-bold text-slate-900 mt-2">Set up your profile</h3>
                         <p className="text-xs font-sans text-slate-500 mt-1">
-                          Your temporary workspace ID is <span className="font-mono font-bold text-slate-800">{activeProfile?.tempId || 'SHOPFAIR-849302'}</span>
+                          Your temporary workspace ID is <span className="font-mono font-bold text-slate-800">{activeProfile?.tempId || 'ShopAffair-849302'}</span>
                         </p>
                       </div>
 
@@ -509,7 +509,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, initialMode 
                         }}
                         className="w-full font-sans font-bold text-sm text-white bg-green-600 hover:bg-green-700 py-3.5 rounded-xl transition-all shadow-md shadow-green-100 flex items-center justify-center cursor-pointer"
                       >
-                        Explore ShopFair
+                        Explore ShopAffair
                       </button>
                     </div>
                   )}

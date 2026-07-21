@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Twitter, Instagram, Linkedin, ArrowUpRight, Fingerprint, Lock, BadgeCheck } from 'lucide-react';
-import { Reveal, StaggerGroup, staggerItem } from '../motion-utils';
+import { Twitter, Instagram, Linkedin, Facebook, ArrowUpRight, Fingerprint, Lock, BadgeCheck } from 'lucide-react';
+import { Reveal } from '../motion-utils';
 
 const TrustNetworkCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -123,7 +123,8 @@ const badges = [
 
 const socials = [
   { icon: Twitter, href: '#' },
-  { icon: Instagram, href: '#' },
+  { icon: Instagram, href: 'https://www.instagram.com/shopaffair.app?igsh=d2ZvdWlxaHJzaHFj' },
+  { icon: Facebook, href: '#' },
   { icon: Linkedin, href: '#' }
 ];
 
@@ -150,7 +151,9 @@ export const Footer: React.FC = () => {
         <div className="space-y-5">
           <div className="flex items-center gap-2.5">
             <img src="/Image/logo.png" alt="ShopFair logo" className="w-9 h-9 object-contain" />
-            <span className="font-display font-black tracking-tight text-lg text-white">ShopFair</span>
+            <span className="font-display font-black tracking-tight text-lg text-white">
+              Shop<span className="text-green-600">Affair</span>
+            </span>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
             Multi-signature escrow infrastructure for Nigeria's digital and physical trade, built so no one has to trade on trust alone.
@@ -220,16 +223,17 @@ export const Footer: React.FC = () => {
       <div className="border-t border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[10px] text-slate-500 font-mono">
-            &copy; {new Date().getFullYear()} ShopFair Nigeria. All settlements final upon release.
+            &copy; {new Date().getFullYear()} ShopAffair Nigeria. All settlements final upon release.
           </p>
-          <StaggerGroup className="flex items-center gap-3" stagger={0.08}>
+          <div className="flex items-center gap-3">
             {socials.map((social, idx) => {
               const Icon = social.icon;
               return (
                 <motion.a
                   key={idx}
                   href={social.href}
-                  variants={staggerItem}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ y: -2, backgroundColor: 'rgba(124, 58, 237, 0.15)' }}
                   className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-purple-300 transition-colors"
                 >
@@ -237,7 +241,7 @@ export const Footer: React.FC = () => {
                 </motion.a>
               );
             })}
-          </StaggerGroup>
+          </div>
         </div>
       </div>
     </motion.footer>

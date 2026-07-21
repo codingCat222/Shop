@@ -111,9 +111,12 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
               alt="ShopFair logo"
               className="w-10 h-10 object-contain"
             />
-            <span className="font-display font-black tracking-tight text-xl bg-gradient-to-r from-purple-950 to-purple-600 bg-clip-text text-transparent">
-              ShopFair
-            </span>
+          <span className="font-display font-black tracking-tight text-xl">
+  <span className="bg-gradient-to-r from-purple-950 to-purple-600 bg-clip-text text-transparent">
+    Shop
+  </span>
+  <span className="text-green-600">Affair</span>
+</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-xs text-slate-600 font-bold">

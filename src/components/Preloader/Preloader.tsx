@@ -59,7 +59,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="relative flex items-center justify-center w-24 h-24 rounded-3xl bg-white text-white shadow-xl shadow-purple-200 mb-8 border border-purple-100"
         >
-          <img src="/Image/logo.png" alt="ShopFair logo" className="w-16 h-16 object-contain" />
+          <img src="/Image/logo.png" alt="ShopAffairlogo" className="w-16 h-16 object-contain" />
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
@@ -74,7 +74,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-4xl font-display font-bold tracking-tight text-slate-900"
         >
-          ShopFair
+         ShopAffair
         </motion.h1>
 
         <motion.p

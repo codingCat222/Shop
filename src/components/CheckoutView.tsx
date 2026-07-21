@@ -109,10 +109,10 @@ export default function CheckoutView({
           accountNumber: activeProfile.accountNumber || 'N/A',
           deliveryFee: shippingFee,
           deliveryTime: '2-4 days',
-          takeOffLocation: 'ShopFair Hub Lagos',
+          takeOffLocation: 'ShopAffair Hub Lagos',
           deliveryLocation: `${city}, ${state}`,
           image: item.product.image,
-          description: `Direct secure escrow trade transaction triggered by order reference ${orderId}. Funds held in ShopFair vault.`,
+          description: `Direct secure escrow trade transaction triggered by order reference ${orderId}. Funds held in ShopAffair vault.`,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         };
@@ -168,7 +168,7 @@ export default function CheckoutView({
               <div>
                 <span className="block text-xs font-bold text-emerald-950">Multi-Sig Escrow Guaranteed</span>
                 <span className="block text-[10px] text-emerald-700/90 leading-normal mt-0.5">
-                  Your funds are secured inside the ShopFair Multi-Signature Vault. The seller is only credited upon successful tracking and physical confirmation of delivery at your destination.
+                  Your funds are secured inside the ShopAffair Multi-Signature Vault. The seller is only credited upon successful tracking and physical confirmation of delivery at your destination.
                 </span>
               </div>
             </div>

@@ -80,7 +80,7 @@ export default function AdminPortal({
   ]);
 
   const [promotions, setPromotions] = useState([
-    { code: 'SHOPFAIRFIRST', discount: '10%', type: 'Percentage', status: 'ACTIVE' },
+    { code: 'ShopAffairFIRST', discount: '10%', type: 'Percentage', status: 'ACTIVE' },
     { code: 'VIRTUALVAULT', discount: '₦1,000', type: 'Flat Rate', status: 'EXPIRED' }
   ]);
 

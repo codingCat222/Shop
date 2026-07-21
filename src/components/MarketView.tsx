@@ -202,7 +202,7 @@ export default function MarketView({
           /* PUBLIC MARKET HEADER (Not logged in) */
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 id="tesm-shop-title" className="text-xl font-sans font-black text-slate-950 tracking-tight leading-none">ShopFair Shop</h1>
+              <h1 id="tesm-shop-title" className="text-xl font-sans font-black text-slate-950 tracking-tight leading-none">ShopAffairShop</h1>
               <p className="text-[11px] text-slate-400 font-medium mt-1">Access our open marketplace</p>
             </div>
             
