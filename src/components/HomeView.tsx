@@ -28,12 +28,12 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
   return (
     <div className="flex-1 flex flex-col bg-white h-full overflow-y-auto no-scrollbar pb-24">
 
-      {/* Header without notification bell */}
+      {/* Header */}
       <div className="px-4 pt-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setRoleModalOpen(true)}
-            className="w-10 h-10 rounded-full bg-purple-100 border border-purple-200 text-purple-600 font-sans font-bold text-sm flex items-center justify-center cursor-pointer hover:bg-purple-200 transition-colors shadow-sm"
+            className="w-10 h-10 rounded-full bg-purple-100 border border-purple-200 text-purple-600 font-sans font-bold text-sm flex items-center justify-center cursor-pointer hover:bg-purple-200 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
           >
             {activeProfile.name.charAt(0).toUpperCase()}
           </button>
@@ -50,7 +50,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
 
         <button 
           onClick={() => setRoleModalOpen(true)}
-          className={`text-[10px] font-sans font-extrabold px-2.5 py-1 rounded-full border cursor-pointer capitalize transition-colors shadow-sm ${
+          className={`text-[10px] font-sans font-extrabold px-2.5 py-1 rounded-full border cursor-pointer capitalize transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg ${
             isSeller 
               ? 'bg-green-50 text-green-600 border-green-200 hover:bg-green-100' 
               : 'bg-purple-50 text-purple-600 border-purple-100 hover:bg-purple-100'
@@ -60,14 +60,14 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         </button>
       </div>
 
-      {/* Available Balance - SMALLER */}
+      {/* Available Balance */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className="px-4 mt-3"
       >
-        <div className="bg-slate-900 text-white rounded-2xl px-4 py-3 shadow-lg relative overflow-hidden">
+        <div className="bg-slate-900 text-white rounded-2xl px-4 py-3 shadow-xl relative overflow-hidden transform transition-all duration-300 hover:shadow-2xl">
           <div className="absolute top-0 right-0 w-20 h-20 bg-purple-600/10 rounded-full blur-2xl pointer-events-none" />
 
           <div className="flex items-center justify-between">
@@ -78,11 +78,11 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             <div className="flex items-center gap-1.5">
               <button 
                 onClick={() => setShowBalance(!showBalance)}
-                className="p-0.5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-colors"
+                className="p-0.5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-all duration-300"
               >
                 {showBalance ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
               </button>
-              <button className="p-0.5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-colors">
+              <button className="p-0.5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-all duration-300">
                 <History className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -95,7 +95,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           </div>
 
           <div className="grid grid-cols-2 gap-1.5 mt-2">
-            <div className="bg-white/5 rounded-xl px-2 py-1.5 border border-white/5 flex items-center gap-1.5">
+            <div className="bg-white/5 rounded-xl px-2 py-1.5 border border-white/5 flex items-center gap-1.5 transition-all duration-300 hover:bg-white/10">
               <div className="p-0.5 bg-blue-500/10 text-blue-400 rounded-lg shadow-sm">
                 <ArrowDownLeft className="w-3 h-3 stroke-[2.5]" />
               </div>
@@ -107,7 +107,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
               </div>
             </div>
 
-            <div className="bg-white/5 rounded-xl px-2 py-1.5 border border-white/5 flex items-center gap-1.5">
+            <div className="bg-white/5 rounded-xl px-2 py-1.5 border border-white/5 flex items-center gap-1.5 transition-all duration-300 hover:bg-white/10">
               <div className="p-0.5 bg-amber-500/10 text-amber-400 rounded-lg shadow-sm">
                 <ArrowUpRight className="w-3 h-3 stroke-[2.5]" />
               </div>
@@ -122,7 +122,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         </div>
       </motion.div>
 
-      {/* Market Actions - WITH SHADOWS */}
+      {/* Market Actions */}
       <div className="px-4 mt-4">
         <h3 className="text-[10px] font-sans font-bold uppercase tracking-wider text-slate-400 mb-2">Market Actions</h3>
         <motion.div
@@ -132,15 +132,15 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
           className="grid grid-cols-2 gap-2"
         >
-          {/* Trade - Green with Briefcase icon */}
+          {/* Trade - Green */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2, scale: 1.01 }}
+            whileHover={{ y: -2, scale: 1.02 }}
             onClick={() => onNavigateTab('trade')}
-            className="p-3 bg-white border border-slate-100 hover:border-green-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
+            className="p-3 bg-white border border-slate-100 hover:border-green-300 shadow-md hover:shadow-xl rounded-xl flex items-center justify-between cursor-pointer transition-all duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 shadow-md">
+              <div className="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 shadow-lg transition-all duration-300 group-hover:shadow-xl">
                 <Briefcase className="w-4 h-4" />
               </div>
               <div>
@@ -148,18 +148,18 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                 <span className="text-[9px] font-sans text-slate-400">Create & manage escrow</span>
               </div>
             </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+            <ChevronRight className="w-3.5 h-3.5 text-slate-300 transition-all duration-300 group-hover:translate-x-1" />
           </motion.div>
 
           {/* My Store - Orange */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2, scale: 1.01 }}
+            whileHover={{ y: -2, scale: 1.02 }}
             onClick={onOpenStoreUpgrade}
-            className="p-3 bg-white border border-slate-100 hover:border-orange-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
+            className="p-3 bg-white border border-slate-100 hover:border-orange-300 shadow-md hover:shadow-xl rounded-xl flex items-center justify-between cursor-pointer transition-all duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0 shadow-md">
+              <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0 shadow-lg transition-all duration-300 group-hover:shadow-xl">
                 <Store className="w-4 h-4" />
               </div>
               <div>
@@ -167,18 +167,18 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                 <span className="text-[9px] font-sans text-slate-400">List merchant items</span>
               </div>
             </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+            <ChevronRight className="w-3.5 h-3.5 text-slate-300 transition-all duration-300 group-hover:translate-x-1" />
           </motion.div>
 
           {/* Chats - Blue */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2, scale: 1.01 }}
+            whileHover={{ y: -2, scale: 1.02 }}
             onClick={() => onNavigateTab('chat')}
-            className="p-3 bg-white border border-slate-100 hover:border-blue-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
+            className="p-3 bg-white border border-slate-100 hover:border-blue-300 shadow-md hover:shadow-xl rounded-xl flex items-center justify-between cursor-pointer transition-all duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-lg transition-all duration-300 group-hover:shadow-xl">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div>
@@ -186,18 +186,18 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                 <span className="text-[9px] font-sans text-slate-400">Direct user channels</span>
               </div>
             </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+            <ChevronRight className="w-3.5 h-3.5 text-slate-300 transition-all duration-300 group-hover:translate-x-1" />
           </motion.div>
 
           {/* Pending Trades - Yellow */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2, scale: 1.01 }}
+            whileHover={{ y: -2, scale: 1.02 }}
             onClick={() => onNavigateTab('trade')}
-            className="p-3 bg-white border border-slate-100 hover:border-yellow-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
+            className="p-3 bg-white border border-slate-100 hover:border-yellow-300 shadow-md hover:shadow-xl rounded-xl flex items-center justify-between cursor-pointer transition-all duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0 shadow-md">
+              <div className="w-9 h-9 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0 shadow-lg transition-all duration-300 group-hover:shadow-xl">
                 <Clock className="w-4 h-4" />
               </div>
               <div>
@@ -205,7 +205,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                 <span className="text-[9px] font-sans text-slate-400">Awaiting clearance</span>
               </div>
             </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+            <ChevronRight className="w-3.5 h-3.5 text-slate-300 transition-all duration-300 group-hover:translate-x-1" />
           </motion.div>
         </motion.div>
       </div>
@@ -218,15 +218,15 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         className="px-4 mt-4"
       >
         <motion.div
-          whileHover={{ scale: 1.01 }}
+          whileHover={{ scale: 1.02 }}
           onClick={() => setReferModalOpen(true)}
-          className="bg-purple-600 text-white rounded-xl px-4 py-3 flex items-center justify-between cursor-pointer relative overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          className="bg-purple-600 text-white rounded-xl px-4 py-3 flex items-center justify-between cursor-pointer relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
         >
           <div className="absolute top-2 right-12 w-8 h-8 bg-purple-500 rounded-full opacity-30" />
           <div className="absolute bottom-1 right-20 w-4 h-4 bg-purple-400 rounded-full opacity-20" />
 
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-white shadow-sm">
+            <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-white shadow-sm transition-all duration-300 group-hover:shadow-md">
               <Gift className="w-4 h-4" />
             </div>
             <div>
@@ -234,7 +234,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
               <span className="text-[10px] font-sans text-purple-200">Get ₦500 for each friend invited!</span>
             </div>
           </div>
-          <ChevronRight className="w-4 h-4 text-purple-200" />
+          <ChevronRight className="w-4 h-4 text-purple-200 transition-all duration-300 group-hover:translate-x-1" />
         </motion.div>
       </motion.div>
 
@@ -251,9 +251,9 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
             onClick={onOpenDeposit}
-            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
+            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none transition-all duration-300 transform hover:scale-105"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-md group-hover:shadow-xl group-hover:bg-purple-100 transition-all duration-300 group-hover:-translate-y-1">
               <Download className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Deposit</span>
@@ -263,9 +263,9 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
             onClick={onOpenTransfer}
-            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
+            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none transition-all duration-300 transform hover:scale-105"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-md group-hover:shadow-xl group-hover:bg-purple-100 transition-all duration-300 group-hover:-translate-y-1">
               <Share2 className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Transfer</span>
@@ -275,9 +275,9 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
             onClick={() => setQuickTransferOpen(true)}
-            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
+            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none transition-all duration-300 transform hover:scale-105"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-md group-hover:shadow-xl group-hover:bg-purple-100 transition-all duration-300 group-hover:-translate-y-1">
               <Phone className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Airtime</span>
@@ -287,9 +287,9 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
             onClick={() => setQuickTransferOpen(true)}
-            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
+            className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none transition-all duration-300 transform hover:scale-105"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-md group-hover:shadow-xl group-hover:bg-purple-100 transition-all duration-300 group-hover:-translate-y-1">
               <Wifi className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Data</span>
@@ -303,9 +303,9 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           <h3 className="text-[10px] font-sans font-bold uppercase tracking-wider text-slate-400">Market Top Products</h3>
           <button 
             onClick={() => onNavigateTab('market')}
-            className="text-[10px] font-sans font-bold text-purple-600 hover:text-purple-700 flex items-center gap-0.5 cursor-pointer"
+            className="text-[10px] font-sans font-bold text-purple-600 hover:text-purple-700 flex items-center gap-0.5 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105"
           >
-            Open Market <ChevronRight className="w-3.5 h-3.5" />
+            Open Market <ChevronRight className="w-3.5 h-3.5 transition-all duration-300 group-hover:translate-x-1" />
           </button>
         </div>
 
@@ -322,14 +322,14 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
               variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
               whileHover={{ y: -2 }}
               onClick={() => onNavigateTab('market')}
-              className="bg-white border border-slate-100 rounded-xl overflow-hidden shadow-xs hover:shadow-md cursor-pointer flex flex-col justify-between transition-shadow"
+              className="bg-white border border-slate-100 rounded-xl overflow-hidden shadow-md hover:shadow-xl cursor-pointer flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02]"
             >
               <div className="aspect-square w-full bg-slate-50 relative overflow-hidden">
                 <img
                   src={prod.image}
                   alt={prod.title}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-all duration-500 transform hover:scale-110"
                 />
               </div>
               <div className="p-2.5">
@@ -346,7 +346,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         <div className="px-4 mt-4">
           <button 
             onClick={onNavigateToLanding}
-            className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-sans font-bold text-xs rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-sans font-bold text-xs rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-purple-400" /> View Marketing Landing Page
           </button>
@@ -364,7 +364,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             >
               <button
                 onClick={() => setRoleModalOpen(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors"
+                className="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-110"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -380,13 +380,13 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                     onRoleSwitch('buyer');
                     setRoleModalOpen(false);
                   }}
-                  className={`w-full p-4 rounded-xl border text-left flex items-start gap-3 transition-all cursor-pointer ${
+                  className={`w-full p-4 rounded-xl border text-left flex items-start gap-3 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-[1.02] ${
                     activeProfile.role === 'buyer'
-                      ? 'border-purple-600 bg-purple-50/50 shadow-sm'
-                      : 'border-slate-100 hover:bg-slate-50 bg-white hover:shadow-sm'
+                      ? 'border-purple-600 bg-purple-50/50'
+                      : 'border-slate-100 hover:bg-slate-50 bg-white'
                   }`}
                 >
-                  <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'buyer' ? 'bg-purple-600 text-white shadow-sm' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`p-2 rounded-xl shrink-0 shadow-sm transition-all duration-300 ${activeProfile.role === 'buyer' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                     <ShoppingCart className="w-4 h-4" />
                   </div>
                   <div>
@@ -402,13 +402,13 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                     onRoleSwitch('seller');
                     setRoleModalOpen(false);
                   }}
-                  className={`w-full p-4 rounded-xl border text-left flex items-start gap-3 transition-all cursor-pointer ${
+                  className={`w-full p-4 rounded-xl border text-left flex items-start gap-3 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-[1.02] ${
                     activeProfile.role === 'seller'
-                      ? 'border-purple-600 bg-purple-50/50 shadow-sm'
-                      : 'border-slate-100 hover:bg-slate-50 bg-white hover:shadow-sm'
+                      ? 'border-purple-600 bg-purple-50/50'
+                      : 'border-slate-100 hover:bg-slate-50 bg-white'
                   }`}
                 >
-                  <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'seller' ? 'bg-purple-600 text-white shadow-sm' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`p-2 rounded-xl shrink-0 shadow-sm transition-all duration-300 ${activeProfile.role === 'seller' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                     <Store className="w-4 h-4" />
                   </div>
                   <div>
@@ -423,7 +423,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
               <div className="mt-5">
                 <button
                   onClick={() => setRoleModalOpen(false)}
-                  className="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white font-sans font-bold text-xs rounded-xl shadow-md shadow-green-100 transition-all cursor-pointer"
+                  className="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white font-sans font-bold text-xs rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 cursor-pointer"
                 >
                   Done
                 </button>
@@ -444,12 +444,12 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             >
               <button
                 onClick={() => setReferModalOpen(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors"
+                className="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-110"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="w-16 h-16 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mx-auto shadow-md">
+              <div className="w-16 h-16 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mx-auto shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-105">
                 <Gift className="w-8 h-8" />
               </div>
 
@@ -468,7 +468,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                   alert('Referral link copied to clipboard!');
                   setReferModalOpen(false);
                 }}
-                className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer"
+                className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 cursor-pointer"
               >
                 Copy & Share Link
               </button>
