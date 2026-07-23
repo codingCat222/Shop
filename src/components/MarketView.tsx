@@ -479,7 +479,7 @@ export default function MarketView({
           </div>
         )}
 
-        {isLoggedIn && (
+        {/* {isLoggedIn && (
           <div className="flex items-center justify-between mb-2 px-0.5">
             <span className="text-[9px] text-slate-400 font-medium">Account No:</span>
             {editingAccount ? (
@@ -506,7 +506,7 @@ export default function MarketView({
               </button>
             )}
           </div>
-        )}
+        )} */}
 
         <div className="flex items-center gap-2 mb-3">
           <div className="relative flex-1">
