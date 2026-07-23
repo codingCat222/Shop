@@ -1,3 +1,8 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
@@ -21,8 +26,8 @@ interface LandingPageProps {
 
 const faqs = [
   {
-    q: 'What is ShopFair?',
-    a: "ShopFair is Nigeria's most secure multi-sig escrow system designed for peer-to-peer commerce. We hold buyers' funds securely in dedicated bank assignment vaults until the physical or digital items are fully delivered and verified, completely eliminating payment fraud."
+    q: 'What is ShopAffair?',
+    a: "ShopAffair is Nigeria's most secure multi-sig escrow system designed for peer-to-peer commerce. We hold buyers' funds securely in dedicated bank assignment vaults until the physical or digital items are fully delivered and verified, completely eliminating payment fraud."
   },
   {
     q: 'How fast do sellers get paid?',
@@ -56,6 +61,7 @@ export default function LandingPage({ onEnterPlatform, onLogin, onRegister }: La
 
       <Navbar onLogin={onLogin} onRegister={onRegister} />
 
+      {/* spacer for fixed navbar + marquee height */}
       <div className="h-[92px]" />
 
       <Hero onEnterPlatform={onEnterPlatform} onRegister={onRegister} />
@@ -65,6 +71,7 @@ export default function LandingPage({ onEnterPlatform, onLogin, onRegister }: La
       <Pricing onEnterPlatform={onEnterPlatform} onRegister={onRegister} />
       <Testimonials />
 
+      {/* FAQ */}
       <section id="faq" className="scroll-mt-28 px-6 py-24 bg-purple-50/20 border-t border-purple-100 relative z-10">
         <div className="max-w-2xl mx-auto space-y-16">
           <Reveal className="text-center space-y-3">
@@ -76,7 +83,7 @@ export default function LandingPage({ onEnterPlatform, onLogin, onRegister }: La
           <div className="space-y-4">
             {faqs.map((faq, idx) => (
               <Reveal key={idx} delay={idx * 0.05}>
-                <div className="bg-white border border-purple-100/80 rounded-xl overflow-hidden shadow-xs">
+                <div className="bg-white border border-purple-100/80 rounded-lg overflow-hidden shadow-xs">
                   <button
                     onClick={() => setFaqOpen(faqOpen === idx ? null : idx)}
                     aria-expanded={faqOpen === idx}
@@ -107,6 +114,7 @@ export default function LandingPage({ onEnterPlatform, onLogin, onRegister }: La
         </div>
       </section>
 
+      {/* CINEMATIC CTA */}
       <section className="px-6 py-20 text-center max-w-2xl mx-auto w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -114,7 +122,7 @@ export default function LandingPage({ onEnterPlatform, onLogin, onRegister }: La
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
           whileHover={{ scale: 1.005 }}
-          className="relative p-8 md:p-12 rounded-3xl space-y-6 shadow-sm border border-purple-200 overflow-hidden"
+          className="relative p-8 md:p-12 rounded-xl space-y-6 shadow-sm border border-purple-200 overflow-hidden"
         >
           <motion.div
             className="absolute inset-0 -z-10"

@@ -9,7 +9,7 @@ interface PricingProps {
 
 export const Pricing: React.FC<PricingProps> = ({ onEnterPlatform, onRegister }) => {
   return (
-    <section className="py-20 px-6 bg-slate-50/30 rounded-[2.5rem] border border-slate-100">
+    <section className="py-20 px-6 bg-slate-50/30 rounded-xl border border-slate-100">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center space-y-3">
           <span className="text-[10px] font-mono font-extrabold text-purple-600 uppercase tracking-widest bg-purple-50 px-2.5 py-1 rounded-md">TRANSPARENT RATES</span>
@@ -18,7 +18,6 @@ export const Pricing: React.FC<PricingProps> = ({ onEnterPlatform, onRegister })
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto" style={{ perspective: 1200 }}>
-          {/* Standard Tier */}
           <motion.div 
             whileHover={{ 
               y: -10, 
@@ -29,7 +28,7 @@ export const Pricing: React.FC<PricingProps> = ({ onEnterPlatform, onRegister })
               boxShadow: '0 20px 40px -15px rgba(109,40,217,0.1)'
             }}
             style={{ transformStyle: "preserve-3d" }}
-            className="bg-white p-8 rounded-3xl border border-purple-100 flex flex-col justify-between space-y-8 relative overflow-hidden shadow-xs transition-all duration-300 text-left"
+            className="bg-white p-8 rounded-lg border border-purple-100 flex flex-col justify-between space-y-8 relative overflow-hidden shadow-xs transition-all duration-300 text-left"
           >
             <div className="space-y-6" style={{ transform: "translateZ(20px)" }}>
               <span className="text-[9px] font-mono font-bold bg-purple-50 text-purple-600 px-2.5 py-1 rounded-full uppercase">Standard Member</span>
@@ -52,14 +51,13 @@ export const Pricing: React.FC<PricingProps> = ({ onEnterPlatform, onRegister })
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={onEnterPlatform}
-              className="w-full py-3.5 bg-white hover:bg-purple-50/40 text-purple-700 font-bold text-xs rounded-xl transition-all cursor-pointer border border-purple-200 shadow-xs"
+              className="w-full py-3.5 bg-white hover:bg-purple-50/40 text-purple-700 font-bold text-xs rounded-lg transition-all cursor-pointer border border-purple-200 shadow-xs"
               style={{ transform: "translateZ(30px)" }}
             >
               Start Browsing
             </motion.button>
           </motion.div>
 
-          {/* Premium Store */}
           <motion.div 
             whileHover={{ 
               y: -10, 
@@ -70,7 +68,7 @@ export const Pricing: React.FC<PricingProps> = ({ onEnterPlatform, onRegister })
               boxShadow: '0 20px 40px -15px rgba(109,40,217,0.15)'
             }}
             style={{ transformStyle: "preserve-3d" }}
-            className="bg-gradient-to-b from-white to-purple-50/40 p-8 rounded-3xl border border-purple-300 flex flex-col justify-between space-y-8 relative overflow-hidden shadow-md shadow-purple-600/5 transition-all duration-300 text-left"
+            className="bg-gradient-to-b from-white to-purple-50/40 p-8 rounded-lg border border-purple-300 flex flex-col justify-between space-y-8 relative overflow-hidden shadow-md shadow-purple-600/5 transition-all duration-300 text-left"
           >
             <div className="absolute top-4 right-4 bg-purple-600 text-white text-[9px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider" style={{ transform: "translateZ(30px)" }}>
               Most Popular
@@ -103,7 +101,7 @@ export const Pricing: React.FC<PricingProps> = ({ onEnterPlatform, onRegister })
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={onRegister}
-              className="w-full py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-purple-600/10 transition-all cursor-pointer"
+              className="w-full py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-lg shadow-lg shadow-purple-600/10 transition-all cursor-pointer"
               style={{ transform: "translateZ(30px)" }}
             >
               Launch Pro Store

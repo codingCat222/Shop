@@ -25,7 +25,7 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-slate-50/50 rounded-[2.5rem] border border-slate-100 px-6">
+    <section className="py-20 bg-slate-50/50 rounded-xl border border-slate-100 px-6">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center space-y-3">
           <span className="text-[10px] font-mono font-extrabold text-purple-600 uppercase tracking-widest bg-purple-50 px-2.5 py-1 rounded-md">CORE SAFEGUARDS</span>
@@ -48,9 +48,9 @@ export const About: React.FC = () => {
                   boxShadow: '0 15px 35px -10px rgba(109,40,217,0.12)' 
                 }}
                 style={{ transformStyle: "preserve-3d" }}
-                className="bg-white p-8 rounded-2xl border border-purple-100 flex flex-col justify-between space-y-6 shadow-xs transition-all duration-300 text-left"
+                className="bg-white p-8 rounded-lg border border-purple-100 flex flex-col justify-between space-y-6 shadow-xs transition-all duration-300 text-left"
               >
-                <div className={`w-12 h-12 rounded-xl bg-purple-50 ${card.color} flex items-center justify-center border border-purple-100`} style={{ transform: "translateZ(30px)" }}>
+                <div className={`w-12 h-12 rounded-lg bg-purple-50 ${card.color} flex items-center justify-center border border-purple-100`} style={{ transform: "translateZ(30px)" }}>
                   <Icon className="w-6 h-6" />
                 </div>
                 <div style={{ transform: "translateZ(20px)" }}>

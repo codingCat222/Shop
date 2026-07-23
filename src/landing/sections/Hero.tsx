@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, type Variants } from 'motion/react';
-import { ShieldCheck, ArrowRight } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Store } from 'lucide-react';
 import { DepthField, usePrefersReducedMotion } from '../motion-utils';
 
 interface HeroProps {
@@ -22,7 +21,7 @@ const PHASES: HeroPhase[] = [
     badge: 'Multi-Sig Escrow Validator Active',
     heading: (
       <>
-        Secure Digital Trade in <span className="text-purple-600">Nigeria</span> With Absolute Trust.
+        Secure Digital Trade in <span className="text-green-600">Nigeria</span> With Absolute Trust.
       </>
     ),
     sub: 'Automated multi-signature escrows for buying and selling phones, laptops, and digital services with zero trust deficits.'
@@ -180,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ onEnterPlatform, onRegister }) => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
             className="text-4xl md:text-6xl font-display font-black text-slate-900 tracking-tight leading-[1.1] max-w-3xl mx-auto"
           >
             {phase.heading}
@@ -202,21 +201,23 @@ export const Hero: React.FC<HeroProps> = ({ onEnterPlatform, onRegister }) => {
 
         <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <motion.button
-            whileHover={{ scale: 1.03, boxShadow: '0 20px 40px -10px rgba(124,58,237,0.35)' }}
+            animate={reduced ? {} : { boxShadow: ['0 10px 30px -8px rgba(124,58,237,0.35)', '0 14px 40px -6px rgba(124,58,237,0.55)', '0 10px 30px -8px rgba(124,58,237,0.35)'] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+            whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.98 }}
             onClick={onEnterPlatform}
-            className="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-2xl shadow-xl shadow-purple-600/20 flex items-center justify-center gap-2 cursor-pointer transition-colors"
+            className="w-full sm:w-auto px-9 py-4.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-black rounded-lg flex items-center justify-center gap-2 cursor-pointer transition-colors"
           >
-            Launch Trading Portal <ArrowRight className="w-4 h-4" />
+            Start Trading <ArrowRight className="w-4 h-4" />
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.03, backgroundColor: 'rgba(139, 92, 246, 0.05)' }}
             whileTap={{ scale: 0.98 }}
             onClick={onRegister}
-            className="w-full sm:w-auto px-8 py-4 bg-white text-purple-700 text-xs font-bold rounded-2xl border border-purple-200 shadow-sm flex items-center justify-center gap-2 cursor-pointer transition-all"
+            className="w-full sm:w-auto px-8 py-4 bg-white text-purple-700 text-xs font-bold rounded-lg border border-purple-200 shadow-sm flex items-center justify-center gap-2 cursor-pointer transition-all"
           >
-            Register Merchant Account
+            <Store className="w-4 h-4" /> Register Merchant Account
           </motion.button>
         </motion.div>
 
@@ -234,7 +235,3 @@ export const Hero: React.FC<HeroProps> = ({ onEnterPlatform, onRegister }) => {
     </div>
   );
 };
-
-
-
-

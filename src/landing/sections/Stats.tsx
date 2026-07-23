@@ -48,7 +48,7 @@ export function Stats() {
             const Icon = item.icon;
             return (
               <Reveal key={idx} delay={idx * 0.1} className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-2xl text-purple-400">
+                <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-purple-400">
                   <Icon className="w-6 h-6 stroke-[1.5]" />
                 </div>
                 <div>

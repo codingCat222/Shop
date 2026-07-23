@@ -17,7 +17,6 @@ export enum EscrowStatus {
   DISPUTED = 'DISPUTED',
   REFUNDED = 'REFUNDED'
 }
-
 export interface TradeItem {
   id: string;
   title: string;
@@ -33,11 +32,15 @@ export interface TradeItem {
   specs?: Record<string, string>;
   accountNumber?: string;
   deliveryFee: number;
-  deliveryTime: string;
+  deliveryTime?: string;
   takeOffLocation?: string;
   deliveryLocation?: string;
   image?: string;
   description?: string;
   createdAt: string;
   updatedAt: string;
+  pickupCode?: string;
+  pickupAttempts?: number;
+ 
+buyerUsername?: string;
 }

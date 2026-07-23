@@ -71,7 +71,6 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* MARQUEE */}
       <div className="bg-purple-950 text-purple-100 overflow-hidden group">
         <motion.div
           className="flex whitespace-nowrap py-1.5 text-[10px] font-mono font-bold tracking-wide"
@@ -93,7 +92,6 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
         </motion.div>
       </div>
 
-      {/* NAVBAR */}
       <motion.header
         animate={{
           backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.0)',
@@ -108,15 +106,15 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
             <motion.img
               whileHover={{ scale: 1.05, rotate: 3 }}
               src="/Image/logo.png"
-              alt="ShopFair logo"
+              alt="ShopAffair logo"
               className="w-10 h-10 object-contain"
             />
-          <span className="font-display font-black tracking-tight text-xl">
-  <span className="bg-gradient-to-r from-purple-950 to-purple-600 bg-clip-text text-transparent">
-    Shop
-  </span>
-  <span className="text-green-600">Affair</span>
-</span>
+            <span className="font-display font-black tracking-tight text-xl">
+              <span className="bg-gradient-to-r from-purple-950 to-purple-600 bg-clip-text text-transparent">
+                Shop
+              </span>
+              <span className="text-green-600">Affair</span>
+            </span>
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-xs text-slate-600 font-bold">
@@ -149,7 +147,7 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
               whileHover={{ scale: 1.02, backgroundColor: '#6d28d9' }}
               whileTap={{ scale: 0.98 }}
               onClick={onRegister}
-              className="px-5 py-2.5 bg-purple-600 text-white font-bold text-xs rounded-xl shadow-lg shadow-purple-600/15 transition-all cursor-pointer"
+              className="px-5 py-2.5 bg-purple-600 text-white font-bold text-xs rounded-lg shadow-lg shadow-purple-600/15 transition-all cursor-pointer"
             >
               Get Started
             </motion.button>
@@ -161,14 +159,13 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
             aria-label="Open menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-purple-50 text-purple-700"
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-purple-50 text-purple-700"
           >
             <Menu className="w-5 h-5" />
           </button>
         </div>
       </motion.header>
 
-      {/* MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -234,7 +231,7 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
                     setMenuOpen(false);
                     onLogin();
                   }}
-                  className="w-full py-3 text-xs font-bold text-purple-700 border border-purple-200 rounded-xl"
+                  className="w-full py-3 text-xs font-bold text-purple-700 border border-purple-200 rounded-lg"
                 >
                   Sign In
                 </button>
@@ -243,7 +240,7 @@ export function Navbar({ onLogin, onRegister }: NavbarProps) {
                     setMenuOpen(false);
                     onRegister();
                   }}
-                  className="w-full py-3 bg-purple-600 text-white font-bold text-xs rounded-xl shadow-lg shadow-purple-600/15"
+                  className="w-full py-3 bg-purple-600 text-white font-bold text-xs rounded-lg shadow-lg shadow-purple-600/15"
                 >
                   Get Started
                 </button>

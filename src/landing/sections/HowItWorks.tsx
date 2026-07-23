@@ -35,7 +35,7 @@ export const HowItWorks: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-2xl border border-purple-50/50 space-y-4 hover:border-purple-200 transition-colors">
+            <div key={idx} className="bg-white p-6 rounded-lg border border-purple-50/50 space-y-4 hover:border-purple-200 transition-colors">
               <span className="text-3xl font-black text-purple-100 font-display block">{step.no}</span>
               <h3 className="text-xs font-black text-slate-900">{step.title}</h3>
               <p className="text-[11px] text-slate-400 leading-relaxed">{step.desc}</p>

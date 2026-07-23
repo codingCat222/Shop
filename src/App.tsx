@@ -8,7 +8,6 @@ import { UserProfile, TradeItem, ChatRoom, ChatMessage, EscrowStatus, TradeType,
 import { initialTrades, initialChatRooms, mockUserProfiles } from './mockData';
 import { motion, AnimatePresence } from 'motion/react';
 
-// Component Imports
 import Preloader from './components/Preloader/Preloader';
 import BottomNav from './components/layout/BottomNav';
 import AuthModal from './components/AuthModal';
@@ -24,12 +23,10 @@ import CheckoutView from './components/CheckoutView';
 import { ShieldCheck, UserPlus, LogIn, AlertTriangle, Cpu, HelpCircle, Landmark, Check, Copy, ArrowRight, X, Sparkles, Star, Clock, LogOut, User, Settings, Bell } from 'lucide-react';
 
 export default function App() {
-  // --- 1. CORE APPS STATES ---
   const [isPreloaderActive, setIsPreloaderActive] = useState(true);
   const [showLanding, setShowLanding] = useState(true);
   const [activeTab, setActiveTab] = useState<'home' | 'trade' | 'chat' | 'market' | 'profile' | 'checkout'>('market');
 
-  // Shopping Cart state
   const [cart, setCart] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('tesm_cart');
     if (saved) {
@@ -38,16 +35,14 @@ export default function App() {
     return [];
   });
 
-  // Active User Profile
   const [activeProfile, setActiveProfile] = useState<UserProfile>(() => {
     const saved = localStorage.getItem('tesm_active_profile');
     if (saved) {
       try { return JSON.parse(saved); } catch (e) { console.error(e); }
     }
-    return mockUserProfiles.guest; // Defaults to visitor/guest
+    return mockUserProfiles.guest;
   });
 
-  // Escrow Trades
   const [trades, setTrades] = useState<TradeItem[]>(() => {
     const saved = localStorage.getItem('tesm_trades');
     if (saved) {
@@ -56,7 +51,6 @@ export default function App() {
     return initialTrades;
   });
 
-  // Active Direct Message Chat Rooms
   const [chatRooms, setChatRooms] = useState<ChatRoom[]>(() => {
     const saved = localStorage.getItem('tesm_chat_rooms');
     if (saved) {
@@ -65,7 +59,6 @@ export default function App() {
     return initialChatRooms;
   });
 
-  // Audit Logs
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() => {
     const saved = localStorage.getItem('tesm_audit_logs');
     if (saved) {
@@ -82,7 +75,6 @@ export default function App() {
     ];
   });
 
-  // Pending Verifications Queue (Admin-auditable)
   const [pendingUsers, setPendingUsers] = useState<UserProfile[]>(() => {
     const saved = localStorage.getItem('tesm_pending_queue');
     if (saved) {
@@ -132,7 +124,6 @@ export default function App() {
     ];
   });
 
-  // Modal Triggers
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authInitialMode, setAuthInitialMode] = useState<'login' | 'register' | 'verify-wizard'>('login');
   const [adminPortalOpen, setAdminPortalOpen] = useState(false);
@@ -141,17 +132,14 @@ export default function App() {
   const [transferOpen, setTransferOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
-  // Compliance verification simulation
   const [isSimulatingApproval, setIsSimulatingApproval] = useState(false);
   const [simulationStep, setSimulationStep] = useState(0);
 
-  // Transfer & Deposit local variables
   const [depositAmount, setDepositAmount] = useState('');
   const [transferAmount, setTransferAmount] = useState('');
   const [transferBeneficiary, setTransferBeneficiary] = useState('');
   const [transferBank, setTransferBank] = useState('Guaranty Trust Bank (GTB)');
 
-  // --- 2. LOCAL SYNC EFFECTS ---
   useEffect(() => {
     localStorage.setItem('tesm_active_profile', JSON.stringify(activeProfile));
   }, [activeProfile]);
@@ -176,7 +164,6 @@ export default function App() {
     localStorage.setItem('tesm_cart', JSON.stringify(cart));
   }, [cart]);
 
-  // Redirect flag for guests who click proceed to checkout or attempt to access checkout directly
   const [redirectToCheckoutAfterLogin, setRedirectToCheckoutAfterLogin] = useState(false);
 
   useEffect(() => {
@@ -188,7 +175,6 @@ export default function App() {
     }
   }, [activeTab, activeProfile]);
 
-  // --- 3. AUDIT LOGGER UTILITY ---
   const addAuditLog = (action: string, details: string, actor: string = 'System') => {
     const newLog: AuditLog = {
       id: `aud_${Date.now()}`,
@@ -200,7 +186,6 @@ export default function App() {
     setAuditLogs((prev) => [newLog, ...prev]);
   };
 
-  // --- 3.5. CART MUTATION HANDLERS ---
   const handleAddToCart = (product: MarketProduct) => {
     setCart((prevCart) => {
       const existing = prevCart.find((item) => item.product.id === product.id);
@@ -245,9 +230,6 @@ export default function App() {
     }
   };
 
-  // --- 4. CALLBACK OPERATIONS ---
-
-  // Auth / SignUp callback
   const handleAuthSuccess = (profile: UserProfile) => {
     setActiveProfile(profile);
     addAuditLog('USER_AUTH', `Authenticated as ${profile.username} (${profile.role}).`, profile.username);
@@ -260,7 +242,6 @@ export default function App() {
   const handleUpdateProfile = (updated: UserProfile) => {
     setActiveProfile(updated);
     if (updated.verificationStatus === 'PENDING') {
-      // Add user to the admin's auditable pending lists if they submit steps
       setPendingUsers((prev) => {
         if (prev.some((p) => p.id === updated.id)) return prev;
         return [updated, ...prev];
@@ -277,7 +258,6 @@ export default function App() {
     addAuditLog('ROLE_SWITCH', `Toggled default view workspace role to: ${role.toUpperCase()}.`, activeProfile.username);
   };
 
-  // Admin approvals
   const handleApproveUser = (userId: string) => {
     const userToVerify = pendingUsers.find((p) => p.id === userId);
     if (!userToVerify) return;
@@ -285,12 +265,11 @@ export default function App() {
     setPendingUsers((prev) => prev.filter((p) => p.id !== userId));
     addAuditLog('VERIFICATION_APPROVED', `Assigned Verified credential credentials to ${userToVerify.username}.`, 'Admin Core');
 
-    // If the active profile is the one being approved (for instant sandbox test loops!)
     if (activeProfile.id === userId) {
       setActiveProfile({
         ...activeProfile,
         verificationStatus: 'VERIFIED',
-        walletBalance: 82000 // Give initial verified balance as shown in Figma
+        walletBalance: 82000
       });
     }
   };
@@ -327,7 +306,6 @@ export default function App() {
     addAuditLog('ADMIN_FORCE_CANCEL', `Admin forced cancellation & refund check for Trade #${tradeId}.`, 'Admin Core');
   };
 
-  // Trade actions
   const handleCreateTrade = (newTrade: Omit<TradeItem, 'id' | 'createdAt' | 'updatedAt' | 'creatorUsername' | 'creatorName' | 'creatorRating' | 'reviewsCount'>) => {
     const id = `trd_${100 + trades.length + 1}`;
     const item: TradeItem = {
@@ -361,7 +339,6 @@ export default function App() {
     addAuditLog('TRADE_STATUS_CHANGE', `Trade #${id} shifted state to ${status}.`, activeProfile.username);
   };
 
-  // Chats callback
   const handleSendMessage = (roomId: string, text: string) => {
     setChatRooms((prev) =>
       prev.map((room) => {
@@ -388,7 +365,6 @@ export default function App() {
   };
 
   const handleStartChatWithSeller = (sellerUsername: string, sellerName: string) => {
-    // See if room already exists
     const existing = chatRooms.find((c) => c.participantUsername === sellerUsername);
     if (existing) {
       setActiveTab('chat');
@@ -412,7 +388,6 @@ export default function App() {
     setActiveTab('chat');
   };
 
-  // Instant Buy Shortcut
   const handleInitiateBuy = (product: MarketProduct) => {
     const id = `trd_${100 + trades.length + 1}`;
     const newEscrow: TradeItem = {
@@ -439,10 +414,8 @@ export default function App() {
     setActiveTab('trade');
   };
 
-  // Total unread messages
   const totalUnreadChats = chatRooms.reduce((sum, r) => sum + r.unreadCount, 0);
 
-  // --- 5. VISUAL RENDERING ENGINES ---
   if (showLanding && !isPreloaderActive) {
     return (
       <>
@@ -509,23 +482,19 @@ export default function App() {
       </AnimatePresence>
 
       <div className="w-full max-w-md min-h-screen bg-white flex flex-col relative overflow-hidden shadow-2xl shadow-purple-950/5 border-x border-slate-100">
-        
-        {/* GLOBAL TOP APP BAR (Only for logged-in users) */}
+
         {activeProfile.verificationStatus !== 'GUEST' && (
           <div className="bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between shadow-xs sticky top-0 z-30">
-            {/* Title representing active state */}
             <h2 className="text-sm font-sans font-black text-slate-950 tracking-tight flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-purple-600" />
               {activeTab === 'home' && "Secured Wallet"}
               {activeTab === 'trade' && "Escrow Trades"}
-              {activeTab === 'market' && "Public Market"}
+              {activeTab === 'market' && "Open Market"}
               {activeTab === 'chat' && "Direct Chats"}
               {activeTab === 'profile' && "Member Profile"}
             </h2>
 
-            {/* Notification and Profile Avatar Dropdown */}
             <div className="flex items-center gap-2.5 relative">
-              {/* Notification icon */}
               <button 
                 onClick={() => alert('Notifications: No unread compliance or payment alerts at this time.')}
                 className="w-9 h-9 rounded-full bg-slate-50 border border-slate-100/80 flex items-center justify-center text-slate-500 relative hover:bg-slate-100 transition-colors cursor-pointer"
@@ -534,7 +503,6 @@ export default function App() {
                 <span className="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-purple-600 rounded-full animate-pulse" />
               </button>
 
-              {/* Profile Avatar trigger with uploaded image or default initials */}
               <div className="relative">
                 <button
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
@@ -553,7 +521,6 @@ export default function App() {
                   )}
                 </button>
 
-                {/* Dropdown Menu block */}
                 <AnimatePresence>
                   {profileDropdownOpen && (
                     <>
@@ -613,9 +580,7 @@ export default function App() {
           </div>
         )}
 
-        {/* ACCESS GATE RESOLUTION */}
         {activeTab !== 'market' && activeProfile.verificationStatus === 'GUEST' ? (
-          /* visitantes / unverified Guest blocks */
           <div className="flex-1 flex flex-col items-center justify-center p-6 text-center space-y-6">
             <div className="relative flex items-center justify-center w-20 h-20 rounded-3xl bg-purple-50 text-purple-600 shadow-sm border border-purple-100/50">
               <ShieldCheck className="w-10 h-10 stroke-[2] animate-float" />
@@ -660,12 +625,11 @@ export default function App() {
                 onClick={() => setActiveTab('market')}
                 className="text-xs font-sans font-bold text-purple-600 hover:text-purple-700 hover:underline"
               >
-                Go back to browse the Public Market
+                Go back to browse the Open Market
               </button>
             </div>
           </div>
         ) : activeTab !== 'market' && activeProfile.verificationStatus === 'UNVERIFIED' ? (
-          /* UNVERIFIED BUT SIGNED IN -> wizard prompt */
           <div className="flex-1 flex flex-col items-center justify-center p-6 text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mx-auto">
               📋
@@ -688,12 +652,10 @@ export default function App() {
             </button>
           </div>
         ) : activeTab !== 'market' && activeProfile.verificationStatus === 'PENDING' ? (
-          /* PENDING REVIEW -> Show nice feedback + admin prompt */
           <div className="flex-1 flex flex-col items-center justify-center p-6 text-center space-y-6">
             {isSimulatingApproval ? (
               <div className="space-y-6 w-full py-8">
                 <div className="relative flex items-center justify-center w-20 h-20 mx-auto">
-                  {/* Rotating elegant gradient border ring */}
                   <div className="absolute inset-0 rounded-full border-4 border-purple-100 border-t-purple-600 animate-spin" />
                   <ShieldCheck className="w-8 h-8 text-purple-600 animate-pulse" />
                 </div>
@@ -754,7 +716,6 @@ export default function App() {
             )}
           </div>
         ) : activeTab !== 'market' && activeProfile.verificationStatus === 'REJECTED' ? (
-          /* REJECTED RED PANEL */
           <div className="flex-1 flex flex-col items-center justify-center p-6 text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-red-50 text-red-500 flex items-center justify-center mx-auto border border-red-100">
               <X className="w-8 h-8" />
@@ -771,7 +732,6 @@ export default function App() {
 
             <button
               onClick={() => {
-                // Return status to unverified so they can resubmit form
                 setActiveProfile({
                   ...activeProfile,
                   verificationStatus: 'UNVERIFIED'
@@ -785,7 +745,6 @@ export default function App() {
             </button>
           </div>
         ) : (
-          /* MAIN APPROVED INTERACTIVE SCREEN ROUTER */
           <>
             {activeTab === 'home' && (
               <HomeView
@@ -816,7 +775,6 @@ export default function App() {
                 onNavigateToTradeDetail={(tradeId) => {
                   const targetTrade = trades.find((t) => t.id === tradeId);
                   if (targetTrade) {
-                    // Inject a synthetic state routing logic inside TradeView
                     setActiveTab('trade');
                   }
                 }}
@@ -871,7 +829,6 @@ export default function App() {
           </>
         )}
 
-        {/* 3D Animated Navigation Controls always sticky at the bottom */}
         <BottomNav
           activeTab={activeTab}
           onTabChange={(tab) => {
@@ -881,9 +838,6 @@ export default function App() {
           activeProfile={activeProfile}
         />
 
-        {/* --- 6. DIALOGS & DRAWER OVERLAYS --- */}
-
-        {/* Account Auth Modal Drawer */}
         <AuthModal
           isOpen={authModalOpen}
           onClose={() => setAuthModalOpen(false)}
@@ -893,7 +847,6 @@ export default function App() {
           onUpdateProfile={handleUpdateProfile}
         />
 
-        {/* Merchant Pro upgrade popup */}
         <AnimatePresence>
           {storeUpgradeOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
@@ -950,7 +903,6 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {/* Deposit fund popup */}
         <AnimatePresence>
           {depositOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
@@ -1019,7 +971,6 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {/* Transfer fund popup */}
         <AnimatePresence>
           {transferOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
@@ -1107,14 +1058,11 @@ export default function App() {
           )}
         </AnimatePresence>
 
-
-
       </div>
     </div>
   );
 }
 
-// Minimal helper placeholder
 function ShieldAlert(props: any) {
   return (
     <svg

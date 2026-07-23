@@ -1,5 +1,5 @@
 import React from 'react';
-import { HelpCircle, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   return (
@@ -12,19 +12,19 @@ export const Contact: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          <div className="bg-white p-6 rounded-2xl border border-purple-100/50 space-y-3 shadow-xs">
+          <div className="bg-white p-6 rounded-lg border border-purple-100/50 space-y-3 shadow-xs">
             <Mail className="w-5 h-5 text-purple-600" />
             <h3 className="text-xs font-black text-slate-900">Email Support</h3>
-            <p className="text-[11px] text-slate-400">support@trade-escrow.ng</p>
+            <p className="text-[11px] text-slate-400">support@shopaffair.ng</p>
           </div>
           
-          <div className="bg-white p-6 rounded-2xl border border-purple-100/50 space-y-3 shadow-xs">
+          <div className="bg-white p-6 rounded-lg border border-purple-100/50 space-y-3 shadow-xs">
             <Phone className="w-5 h-5 text-purple-600" />
             <h3 className="text-xs font-black text-slate-900">Phone Hotline</h3>
             <p className="text-[11px] text-slate-400">+234 (0) 803 219 4837</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-purple-100/50 space-y-3 shadow-xs">
+          <div className="bg-white p-6 rounded-lg border border-purple-100/50 space-y-3 shadow-xs">
             <MapPin className="w-5 h-5 text-purple-600" />
             <h3 className="text-xs font-black text-slate-900">Headquarters</h3>
             <p className="text-[11px] text-slate-400">Ikeja, Lagos, Nigeria</p>
