@@ -121,7 +121,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         </div>
       </motion.div>
 
-      {/* Market Actions - REDUCED PADDING */}
+      {/* Market Actions - REDUCED PADDING WITH NEW COLORS */}
       <div className="px-4 mt-4">
         <h3 className="text-[10px] font-sans font-bold uppercase tracking-wider text-slate-400 mb-2">Market Actions</h3>
         <motion.div
@@ -131,6 +131,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
           className="grid grid-cols-2 gap-2"
         >
+          {/* Trade - Green */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
@@ -138,7 +139,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0">
                 <ArrowUpRight className="w-4 h-4" />
               </div>
               <div>
@@ -149,6 +150,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
           </motion.div>
 
+          {/* My Store - Orange */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
@@ -156,7 +158,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0">
                 <Store className="w-4 h-4" />
               </div>
               <div>
@@ -167,6 +169,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
           </motion.div>
 
+          {/* Chats - Blue */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
@@ -174,7 +177,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div>
@@ -185,6 +188,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
           </motion.div>
 
+          {/* Pending Trades - Yellow */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
             whileHover={{ y: -2 }}
@@ -192,7 +196,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0">
                 <Clock className="w-4 h-4" />
               </div>
               <div>
