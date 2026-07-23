@@ -378,7 +378,7 @@ export default function MarketView({
       <div className="px-4 pt-4 pb-2 sticky top-0 bg-[#F8F9FC] z-10 border-b border-slate-50">
         {isLoggedIn ? (
           <div className="flex items-center justify-between mb-2 gap-2">
-            <div className="flex items-center gap-2 bg-[#F5F3FF] border border-[#7C3AED]/10 rounded-lg px-2 py-1 flex-1 max-w-[70%] shadow-[0_2px_8px_rgba(124,58,237,0.05)]">
+            <div className="flex items-center gap-2 bg-[#F5F3FF] border border-[#7C3AED]/10 rounded-lg px-2 py-1 flex-1 max-w-[70%] shadow-md transition-all duration-300 hover:shadow-lg">
               <div className="w-6 h-6 rounded-lg bg-[#F5F3FF] border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] shrink-0 shadow-sm">
                 <Wallet className="w-3 h-3" />
               </div>
@@ -390,7 +390,7 @@ export default function MarketView({
                   </span>
                   <button
                     onClick={() => setShowBalance(!showBalance)}
-                    className="text-slate-400 hover:text-slate-600 focus:outline-none shrink-0"
+                    className="text-slate-400 hover:text-slate-600 focus:outline-none shrink-0 transition-all duration-300 transform hover:scale-110"
                   >
                     {showBalance ? <EyeOff className="w-2.5 h-2.5" /> : <Eye className="w-2.5 h-2.5" />}
                   </button>
@@ -403,18 +403,18 @@ export default function MarketView({
                 onClick={() => {
                   alert("Your saved favorites lists will appear here.");
                 }}
-                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors cursor-pointer shadow-sm hover:shadow-md"
+                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110"
               >
                 <Heart className="w-3.5 h-3.5" />
               </button>
 
               <button
                 onClick={() => setCartOpen(true)}
-                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer shadow-sm hover:shadow-md"
+                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-all duration-300 relative cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110"
               >
                 <ShoppingCart className="w-3.5 h-3.5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[8px] font-sans font-extrabold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs border border-white">
+                  <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[8px] font-sans font-extrabold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs border border-white transition-all duration-300 transform hover:scale-110">
                     {cartCount}
                   </span>
                 )}
@@ -457,7 +457,7 @@ export default function MarketView({
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`h-1 rounded-full transition-all duration-300 ${
+                    className={`h-1 rounded-full transition-all duration-300 transform hover:scale-150 ${
                       index === currentSlide ? 'w-3 bg-[#7C3AED] shadow-sm' : 'w-1 bg-slate-300'
                     }`}
                   />
@@ -467,11 +467,11 @@ export default function MarketView({
 
             <button
               onClick={() => setCartOpen(true)}
-              className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer shadow-sm hover:shadow-md ml-1"
+              className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-all duration-300 relative cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110 ml-1"
             >
               <ShoppingCart className="w-3.5 h-3.5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[8px] font-sans font-extrabold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
+                <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[8px] font-sans font-extrabold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs border border-white transition-all duration-300 transform hover:scale-110">
                   {cartCount}
                 </span>
               )}
@@ -489,17 +489,17 @@ export default function MarketView({
                   onChange={(e) => setAccountDraft(e.target.value)}
                   className="w-28 px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-800 bg-slate-50 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-[#7C3AED]/30 shadow-inner"
                 />
-                <button onClick={saveAccountNumber} className="text-emerald-600 hover:bg-emerald-50 rounded p-0.5 cursor-pointer shadow-sm hover:shadow-md">
+                <button onClick={saveAccountNumber} className="text-emerald-600 hover:bg-emerald-50 rounded p-0.5 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110">
                   <CheckIcon className="w-3 h-3" />
                 </button>
-                <button onClick={cancelAccountEdit} className="text-slate-400 hover:bg-slate-100 rounded p-0.5 cursor-pointer shadow-sm hover:shadow-md">
+                <button onClick={cancelAccountEdit} className="text-slate-400 hover:bg-slate-100 rounded p-0.5 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110">
                   <X className="w-3 h-3" />
                 </button>
               </div>
             ) : (
               <button
                 onClick={() => setEditingAccount(true)}
-                className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-700 hover:text-[#7C3AED] transition-colors cursor-pointer shadow-sm hover:shadow-md px-2 py-0.5 rounded"
+                className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-700 hover:text-[#7C3AED] transition-colors cursor-pointer shadow-sm hover:shadow-md px-2 py-0.5 rounded transition-all duration-300 transform hover:scale-105"
               >
                 {accountNumber}
                 <Pencil className="w-2.5 h-2.5 text-slate-400" />
@@ -515,12 +515,12 @@ export default function MarketView({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={isLoggedIn ? "Search products..." : "Search materials..."}
-              className="w-full pl-8 pr-3 py-2 bg-white border border-slate-200 rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] transition-all shadow-sm focus:shadow-md"
+              className="w-full pl-8 pr-3 py-2 bg-white border border-slate-200 rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] transition-all duration-300 shadow-sm focus:shadow-md"
             />
             <Search className="absolute left-2.5 top-2 w-3.5 h-3.5 text-slate-400" />
           </div>
           {isLoggedIn && (
-            <button className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 shrink-0 transition-colors cursor-pointer shadow-sm hover:shadow-md">
+            <button className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 shrink-0 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110">
               <SlidersHorizontal className="w-4 h-4" />
             </button>
           )}
@@ -529,7 +529,7 @@ export default function MarketView({
         {/* WhatsApp-style Ads Section - COMPACT */}
         <div className="mb-3">
           {/* Hot Deals Carousel - Compact Main Banner */}
-          <div className="relative overflow-hidden rounded-xl shadow-lg border border-purple-400/20 mb-2">
+          <div className="relative overflow-hidden rounded-xl shadow-lg border border-purple-400/20 mb-2 transition-all duration-300 hover:shadow-2xl">
             <AnimatePresence mode="wait">
               <motion.div
                 key={hotDealSlide}
@@ -548,10 +548,10 @@ export default function MarketView({
                           const Icon = hotDeals[hotDealSlide].icon;
                           return <Icon className="w-2.5 h-2.5 text-amber-400" />;
                         })()}
-                        <span className="bg-amber-400 text-black text-[7px] font-black px-1.5 py-0.5 rounded-full tracking-wider shadow-sm">
+                        <span className="bg-amber-400 text-black text-[7px] font-black px-1.5 py-0.5 rounded-full tracking-wider shadow-sm transition-all duration-300 hover:shadow-md">
                           {hotDeals[hotDealSlide].tag}
                         </span>
-                        <span className="bg-white/20 text-white text-[7px] font-bold px-1.5 py-0.5 rounded-full backdrop-blur-sm shadow-sm">
+                        <span className="bg-white/20 text-white text-[7px] font-bold px-1.5 py-0.5 rounded-full backdrop-blur-sm shadow-sm transition-all duration-300 hover:shadow-md">
                           {hotDeals[hotDealSlide].tag2}
                         </span>
                       </div>
@@ -560,18 +560,18 @@ export default function MarketView({
                       </h2>
                       <p className="text-[10px] text-white/80 font-semibold mt-0.5">{hotDeals[hotDealSlide].subtitle}</p>
                       <div className="flex items-center gap-2 mt-1.5">
-                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded-full border border-white/10 shadow-sm">
+                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded-full border border-white/10 shadow-sm transition-all duration-300 hover:shadow-md">
                           <Clock className="w-2.5 h-2.5 text-amber-400" />
                           <span className="text-[8px] text-white font-bold">Ends in {hotDeals[hotDealSlide].timeLeft}</span>
                         </div>
-                        <button className="bg-white text-purple-700 text-[8px] font-black px-2 py-0.5 rounded-full shadow-lg hover:shadow-xl transition-all">
+                        <button className="bg-white text-purple-700 text-[8px] font-black px-2 py-0.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5">
                           SHOP NOW →
                         </button>
                       </div>
                     </div>
                     <div className="flex -space-x-2">
                       {hotDeals[hotDealSlide].images.slice(0, 2).map((img, i) => (
-                        <div key={i} className="w-10 h-10 rounded-lg border-2 border-white/30 overflow-hidden shadow-md -ml-2 first:ml-0">
+                        <div key={i} className="w-10 h-10 rounded-lg border-2 border-white/30 overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-105 -ml-2 first:ml-0">
                           <img src={img} alt="" className="w-full h-full object-cover" />
                         </div>
                       ))}
@@ -587,7 +587,7 @@ export default function MarketView({
                 <button
                   key={index}
                   onClick={() => goToHotDealSlide(index)}
-                  className={`h-1 rounded-full transition-all duration-300 ${
+                  className={`h-1 rounded-full transition-all duration-300 transform hover:scale-150 ${
                     index === hotDealSlide ? 'w-3 bg-white shadow-sm' : 'w-1 bg-white/50'
                   }`}
                 />
@@ -597,13 +597,13 @@ export default function MarketView({
             {/* Hot Deals Arrows - Smaller */}
             <button
               onClick={() => goToHotDealSlide((hotDealSlide - 1 + hotDeals.length) % hotDeals.length)}
-              className="absolute left-1.5 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
+              className="absolute left-1.5 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
             >
               <ChevronLeft className="w-3 h-3" />
             </button>
             <button
               onClick={() => goToHotDealSlide((hotDealSlide + 1) % hotDeals.length)}
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all duration-300 transform hover:scale-110 z-10"
             >
               <ChevronRight className="w-3 h-3" />
             </button>
@@ -625,13 +625,13 @@ export default function MarketView({
                   return (
                     <div
                       key={card.id}
-                      className={`relative bg-gradient-to-br ${card.bgGradient} rounded-lg overflow-hidden px-2 py-1.5 shadow-md border border-white/20`}
+                      className={`relative bg-gradient-to-br ${card.bgGradient} rounded-lg overflow-hidden px-2 py-1.5 shadow-md border border-white/20 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1`}
                     >
                       <div className="absolute top-0 right-0 w-8 h-8 bg-white/10 rounded-full blur-xl" />
                       <div className="relative flex items-center justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-1">
-                            <span className="text-[5px] font-black text-white bg-white/20 px-1 py-0.5 rounded backdrop-blur-sm shadow-sm">{card.tag}</span>
+                            <span className="text-[5px] font-black text-white bg-white/20 px-1 py-0.5 rounded backdrop-blur-sm shadow-sm transition-all duration-300 hover:shadow-md">{card.tag}</span>
                           </div>
                           <div className="flex items-center gap-1 mt-0.5">
                             <h3 className="text-xs font-black text-white leading-none">{card.title}</h3>
@@ -650,8 +650,8 @@ export default function MarketView({
                           )}
                         </div>
                         <div className="flex items-center gap-1">
-                          <Icon className="w-3 h-3 text-white/80" />
-                          <button className="bg-white/20 hover:bg-white/30 text-white text-[5px] font-black px-1.5 py-0.5 rounded-full backdrop-blur-sm transition-colors whitespace-nowrap shadow-sm hover:shadow-md">
+                          <Icon className="w-3 h-3 text-white/80 transition-all duration-300 transform hover:scale-110" />
+                          <button className="bg-white/20 hover:bg-white/30 text-white text-[5px] font-black px-1.5 py-0.5 rounded-full backdrop-blur-sm transition-all duration-300 whitespace-nowrap shadow-sm hover:shadow-md transform hover:scale-105">
                             {card.buttonText}
                           </button>
                         </div>
@@ -668,7 +668,7 @@ export default function MarketView({
                 <button
                   key={index}
                   onClick={() => goToFeatureSlide(index)}
-                  className={`h-1 rounded-full transition-all duration-300 ${
+                  className={`h-1 rounded-full transition-all duration-300 transform hover:scale-150 ${
                     index === featureSlide ? 'w-2.5 bg-purple-600 shadow-sm' : 'w-1 bg-slate-300'
                   }`}
                 />
@@ -678,13 +678,13 @@ export default function MarketView({
             {/* Feature Cards Arrows - Smaller */}
             <button
               onClick={() => goToFeatureSlide((featureSlide - 1 + totalFeatureSlides) % totalFeatureSlides)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -ml-0.5 z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all duration-300 transform hover:scale-110 -ml-0.5 z-10"
             >
               <ChevronLeft className="w-2 h-2" />
             </button>
             <button
               onClick={() => goToFeatureSlide((featureSlide + 1) % totalFeatureSlides)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -mr-0.5 z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all duration-300 transform hover:scale-110 -mr-0.5 z-10"
             >
               <ChevronRight className="w-2 h-2" />
             </button>
@@ -695,7 +695,7 @@ export default function MarketView({
           <div className="bg-[#F4F4F6] p-0.5 rounded-lg flex w-full mb-3 shadow-inner">
             <button
               onClick={() => setMarketTab('supply')}
-              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer shadow-sm ${
+              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all duration-300 rounded-md cursor-pointer shadow-sm transform hover:scale-[1.02] ${
                 marketTab === 'supply'
                   ? 'bg-white text-slate-900 shadow-md'
                   : 'text-slate-500 hover:text-slate-800 hover:shadow-sm'
@@ -705,7 +705,7 @@ export default function MarketView({
             </button>
             <button
               onClick={() => setMarketTab('demands')}
-              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer shadow-sm ${
+              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all duration-300 rounded-md cursor-pointer shadow-sm transform hover:scale-[1.02] ${
                 marketTab === 'demands'
                   ? 'bg-white text-slate-900 shadow-md'
                   : 'text-slate-500 hover:text-slate-800 hover:shadow-sm'
@@ -721,7 +721,7 @@ export default function MarketView({
             {activeGroup && (
               <button
                 onClick={goBackToGroups}
-                className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer shrink-0 shadow-sm hover:shadow-md"
+                className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer shrink-0 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110"
               >
                 <ChevronLeft className="w-3 h-3" />
               </button>
@@ -735,7 +735,7 @@ export default function MarketView({
             <div className="grid grid-cols-4 gap-1.5 mb-2">
               <button
                 onClick={() => { setSelectedCategory('Trending'); setActiveGroup(null); }}
-                className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer shadow-sm hover:shadow-md ${
+                className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-[1.05] ${
                   selectedCategory === 'Trending' && !activeGroup
                     ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-md'
                     : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
@@ -753,7 +753,7 @@ export default function MarketView({
                   <button
                     key={group.name}
                     onClick={() => openGroup(group.name)}
-                    className="flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border border-slate-100 bg-white text-[#1A1A1A] hover:bg-slate-50 transition-all cursor-pointer shadow-sm hover:shadow-md"
+                    className="flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border border-slate-100 bg-white text-[#1A1A1A] hover:bg-slate-50 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-[1.05]"
                   >
                     <GroupIcon className="w-3.5 h-3.5 mb-0.5 text-slate-600" />
                     <span className="text-[8px] font-sans font-bold tracking-tight text-slate-700 text-center leading-tight">
@@ -772,7 +772,7 @@ export default function MarketView({
                   <button
                     key={sub.name}
                     onClick={() => selectSubcategory(sub.name)}
-                    className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer shadow-sm hover:shadow-md ${
+                    className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-[1.05] ${
                       isActive
                         ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-md'
                         : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
@@ -806,10 +806,10 @@ export default function MarketView({
                     <div
                       key={prod.id}
                       onClick={() => setSelectedProduct(prod)}
-                      className="bg-white border border-slate-100/90 rounded-lg overflow-hidden shadow-md hover:shadow-xl cursor-pointer flex flex-col justify-between hover:border-slate-200 transition-all relative"
+                      className="bg-white border border-slate-100/90 rounded-lg overflow-hidden shadow-md hover:shadow-xl cursor-pointer flex flex-col justify-between hover:border-slate-200 transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] relative"
                     >
                       {ownListing && (
-                        <span className="absolute top-1.5 left-1.5 z-10 bg-slate-900/80 text-white text-[7px] font-sans font-black px-1.5 py-0.5 rounded-full tracking-wider backdrop-blur-xs shadow-sm">
+                        <span className="absolute top-1.5 left-1.5 z-10 bg-slate-900/80 text-white text-[7px] font-sans font-black px-1.5 py-0.5 rounded-full tracking-wider backdrop-blur-xs shadow-sm transition-all duration-300 hover:shadow-md">
                           YOUR LISTING
                         </span>
                       )}
@@ -818,7 +818,7 @@ export default function MarketView({
                           src={prod.image}
                           alt={prod.title}
                           referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transition-all duration-500 transform hover:scale-110"
                         />
                       </div>
 
@@ -842,7 +842,7 @@ export default function MarketView({
                           </span>
                           {ownListing ? (
                             <div
-                              className="w-6 h-6 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-sm"
+                              className="w-6 h-6 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-sm transition-all duration-300 hover:shadow-md"
                               title="You can't buy your own listing"
                             >
                               <Lock className="w-2.5 h-2.5" />
@@ -853,7 +853,7 @@ export default function MarketView({
                                 e.stopPropagation();
                                 onAddToCart(prod);
                               }}
-                              className="w-6 h-6 bg-[#7C3AED] hover:bg-purple-700 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer shadow-md hover:shadow-lg"
+                              className="w-6 h-6 bg-[#7C3AED] hover:bg-purple-700 text-white rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg transform hover:scale-110"
                             >
                               <Plus className="w-3 h-3 stroke-[2.5]" />
                             </button>
@@ -883,18 +883,18 @@ export default function MarketView({
                   <div
                     key={demand.id}
                     onClick={() => setSelectedDemand(demand)}
-                    className="bg-white border border-slate-100 rounded-lg p-2 shadow-md hover:shadow-xl transition-all flex gap-2 cursor-pointer"
+                    className="bg-white border border-slate-100 rounded-lg p-2 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.01] flex gap-2 cursor-pointer"
                   >
                     <img
                       src={demand.image}
                       alt={demand.title}
-                      className="w-14 h-14 rounded-lg object-cover border border-slate-100 shrink-0 shadow-sm"
+                      className="w-14 h-14 rounded-lg object-cover border border-slate-100 shrink-0 shadow-sm transition-all duration-300 hover:shadow-md"
                     />
 
                     <div className="flex-1 min-w-0 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center justify-between gap-1">
-                          <span className="text-[8px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-1.5 py-0.5 rounded shadow-sm">
+                          <span className="text-[8px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-1.5 py-0.5 rounded shadow-sm transition-all duration-300 hover:shadow-md">
                             {demand.category}
                           </span>
                           <span className="text-[8px] text-slate-400 font-medium">@{demand.buyerUsername}</span>
@@ -914,7 +914,7 @@ export default function MarketView({
                             e.stopPropagation();
                             onStartChatWithSeller(demand.buyerUsername, demand.buyerName);
                           }}
-                          className="text-[8px] font-sans font-bold text-white bg-[#7C3AED] hover:bg-purple-700 px-2 py-0.5 rounded-md transition-colors shadow-md hover:shadow-lg"
+                          className="text-[8px] font-sans font-bold text-white bg-[#7C3AED] hover:bg-purple-700 px-2 py-0.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
                         >
                           Send Offer
                         </button>
@@ -954,12 +954,12 @@ export default function MarketView({
             >
               <div className="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <ShoppingCart className="w-5 h-5 text-[#7C3AED] shadow-sm" />
+                  <ShoppingCart className="w-5 h-5 text-[#7C3AED] shadow-sm transition-all duration-300 hover:shadow-md" />
                   <h3 className="text-sm font-sans font-black text-slate-900 tracking-tight">Your Cart ({cartCount})</h3>
                 </div>
                 <button
                   onClick={() => setCartOpen(false)}
-                  className="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer shadow-sm hover:shadow-md"
+                  className="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -968,11 +968,11 @@ export default function MarketView({
               <div className="flex-1 overflow-y-auto p-4 space-y-3.5 no-scrollbar">
                 {cart.length > 0 ? (
                   cart.map((item) => (
-                    <div key={item.product.id} className="flex items-center gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100/50 shadow-sm hover:shadow-md transition-shadow">
+                    <div key={item.product.id} className="flex items-center gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100/50 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5">
                       <img
                         src={item.product.image}
                         alt={item.product.title}
-                        className="w-12 h-12 rounded-lg object-cover border border-slate-100 shrink-0 shadow-sm"
+                        className="w-12 h-12 rounded-lg object-cover border border-slate-100 shrink-0 shadow-sm transition-all duration-300 hover:shadow-md"
                       />
                       <div className="flex-1 min-w-0">
                         <span className="block text-xs font-bold text-slate-800 truncate">{item.product.title}</span>
@@ -981,14 +981,14 @@ export default function MarketView({
                         <div className="flex items-center gap-2 mt-1.5">
                           <button
                             onClick={() => onUpdateCartQty(item.product.id, -1)}
-                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer shadow-sm hover:shadow-md"
+                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110"
                           >
                             <Minus className="w-2.5 h-2.5" />
                           </button>
                           <span className="text-[11px] font-sans font-bold text-slate-700 w-4 text-center">{item.quantity}</span>
                           <button
                             onClick={() => onUpdateCartQty(item.product.id, 1)}
-                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer shadow-sm hover:shadow-md"
+                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-110"
                           >
                             <Plus className="w-2.5 h-2.5" />
                           </button>
@@ -997,7 +997,7 @@ export default function MarketView({
 
                       <button
                         onClick={() => onRemoveFromCart(item.product.id)}
-                        className="p-1.5 text-rose-500 hover:bg-rose-50 hover:text-rose-600 rounded-lg transition-colors shrink-0 cursor-pointer shadow-sm hover:shadow-md"
+                        className="p-1.5 text-rose-500 hover:bg-rose-50 hover:text-rose-600 rounded-lg transition-all duration-300 shrink-0 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -1023,7 +1023,7 @@ export default function MarketView({
                       setCartOpen(false);
                       onProceedToCheckout();
                     }}
-                    className="w-full py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-black text-xs uppercase tracking-wider rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-black text-xs uppercase tracking-wider rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     Proceed to Checkout <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -1048,22 +1048,22 @@ export default function MarketView({
 
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer shadow-sm hover:shadow-md"
+                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110"
               >
                 <X className="w-5 h-5" />
               </button>
 
               <div className="overflow-y-auto px-6 pb-28 space-y-4 no-scrollbar flex-1">
-                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100 shadow-sm">
+                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-md">
                   <img
                     src={selectedProduct.image}
                     alt={selectedProduct.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-all duration-500 transform hover:scale-105"
                   />
                 </div>
 
                 {isOwnListing(selectedProduct) && (
-                  <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-lg flex items-center gap-2 shadow-sm">
+                  <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-lg flex items-center gap-2 shadow-sm transition-all duration-300 hover:shadow-md">
                     <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                     <p className="text-[10px] font-sans text-slate-500 font-semibold">
                       This is your own listing — you can't buy or chat about it as a customer.
@@ -1071,9 +1071,9 @@ export default function MarketView({
                   </div>
                 )}
 
-                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40 shadow-sm">
+                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40 shadow-sm transition-all duration-300 hover:shadow-md">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center shadow-sm">
+                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center shadow-sm transition-all duration-300 hover:shadow-md">
                       {selectedProduct.sellerName.charAt(0)}
                     </div>
                     <div>
@@ -1088,7 +1088,7 @@ export default function MarketView({
                 </div>
 
                 <div className="space-y-1">
-                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md shadow-sm">
+                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md shadow-sm transition-all duration-300 hover:shadow-md">
                     {selectedProduct.category}
                   </span>
                   <h2 className="text-base font-sans font-black text-slate-900 leading-snug">
@@ -1098,7 +1098,7 @@ export default function MarketView({
                     <span className="text-lg font-sans font-black text-slate-900">
                       ₦{selectedProduct.price.toLocaleString()}
                     </span>
-                    <span className="text-[10px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-200 shadow-sm">
+                    <span className="text-[10px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-200 shadow-sm transition-all duration-300 hover:shadow-md">
                       {selectedProduct.condition}
                     </span>
                   </div>
@@ -1114,7 +1114,7 @@ export default function MarketView({
 
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 flex gap-3 shadow-inner">
                 {isOwnListing(selectedProduct) ? (
-                  <div className="flex-1 py-3 bg-slate-50 text-slate-400 font-sans font-bold text-xs rounded-lg border border-slate-200/50 text-center flex items-center justify-center gap-1.5 shadow-sm">
+                  <div className="flex-1 py-3 bg-slate-50 text-slate-400 font-sans font-bold text-xs rounded-lg border border-slate-200/50 text-center flex items-center justify-center gap-1.5 shadow-sm transition-all duration-300 hover:shadow-md">
                     <Lock className="w-3.5 h-3.5" /> This is your own listing
                   </div>
                 ) : (
@@ -1124,7 +1124,7 @@ export default function MarketView({
                         onStartChatWithSeller(selectedProduct.sellerUsername, selectedProduct.sellerName);
                         setSelectedProduct(null);
                       }}
-                      className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-colors shadow-sm hover:shadow-md"
+                      className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-[1.02]"
                     >
                       Chat with Seller
                     </button>
@@ -1134,7 +1134,7 @@ export default function MarketView({
                         setSelectedProduct(null);
                         setCartOpen(true);
                       }}
-                      className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-lg hover:shadow-xl cursor-pointer text-center transition-all"
+                      className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 cursor-pointer text-center"
                     >
                       Add to Cart
                     </button>
@@ -1160,23 +1160,23 @@ export default function MarketView({
 
               <button
                 onClick={() => setSelectedDemand(null)}
-                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer shadow-sm hover:shadow-md"
+                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md transform hover:scale-110"
               >
                 <X className="w-5 h-5" />
               </button>
 
               <div className="overflow-y-auto px-6 pb-28 space-y-4 no-scrollbar flex-1">
-                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100 shadow-sm">
+                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-md">
                   <img
                     src={selectedDemand.image}
                     alt={selectedDemand.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-all duration-500 transform hover:scale-105"
                   />
                 </div>
 
-                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40 shadow-sm">
+                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40 shadow-sm transition-all duration-300 hover:shadow-md">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center shadow-sm">
+                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center shadow-sm transition-all duration-300 hover:shadow-md">
                       {selectedDemand.buyerName.charAt(0)}
                     </div>
                     <div>
@@ -1185,14 +1185,14 @@ export default function MarketView({
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded border border-purple-250 shadow-sm">
+                    <span className="text-[10px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded border border-purple-250 shadow-sm transition-all duration-300 hover:shadow-md">
                       {selectedDemand.status}
                     </span>
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md shadow-sm">
+                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md shadow-sm transition-all duration-300 hover:shadow-md">
                     {selectedDemand.category}
                   </span>
                   <h2 className="text-base font-sans font-black text-slate-900 leading-snug">
@@ -1218,7 +1218,7 @@ export default function MarketView({
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 flex gap-3 shadow-inner">
                 <button
                   onClick={() => setSelectedDemand(null)}
-                  className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-colors shadow-sm hover:shadow-md"
+                  className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-[1.02]"
                 >
                   Close
                 </button>
@@ -1227,7 +1227,7 @@ export default function MarketView({
                     onStartChatWithSeller(selectedDemand.buyerUsername, selectedDemand.buyerName);
                     setSelectedDemand(null);
                   }}
-                  className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-lg hover:shadow-xl cursor-pointer text-center transition-all"
+                  className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 cursor-pointer text-center"
                 >
                   Send Offer Details
                 </button>
