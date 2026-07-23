@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Bell, Eye, EyeOff, History, Landmark, Download, ArrowUpRight, ArrowDownLeft, Share2, Store, ShoppingCart, MessageSquare, Clock, ShieldCheck, ChevronRight, X, Phone, Wifi, Gift } from 'lucide-react';
+import { Bell, Eye, EyeOff, History, Landmark, Download, ArrowUpRight, ArrowDownLeft, Share2, Store, ShoppingCart, MessageSquare, Clock, ShieldCheck, ChevronRight, X, Phone, Wifi, Gift, Briefcase } from 'lucide-react';
 import { UserProfile } from '../types';
 import { mockProducts } from '../mockData';
 import QuickTransferModal from './QuickTransferModal';
@@ -23,9 +23,12 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
 
   const trendingProducts = mockProducts.slice(0, 2);
 
+  const isSeller = activeProfile.role === 'seller';
+
   return (
     <div className="flex-1 flex flex-col bg-white h-full overflow-y-auto no-scrollbar pb-24">
 
+      {/* Header without notification bell */}
       <div className="px-4 pt-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button 
@@ -45,18 +48,16 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button 
-            onClick={() => setRoleModalOpen(true)}
-            className="text-[10px] font-sans font-extrabold px-2.5 py-1 rounded-full bg-purple-50 text-purple-600 border border-purple-100 cursor-pointer capitalize"
-          >
-            Role: {activeProfile.role}
-          </button>
-          <button className="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 relative">
-            <Bell className="w-4.5 h-4.5" />
-            <span className="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-purple-600 rounded-full" />
-          </button>
-        </div>
+        <button 
+          onClick={() => setRoleModalOpen(true)}
+          className={`text-[10px] font-sans font-extrabold px-2.5 py-1 rounded-full border cursor-pointer capitalize transition-colors ${
+            isSeller 
+              ? 'bg-green-50 text-green-600 border-green-200 hover:bg-green-100' 
+              : 'bg-purple-50 text-purple-600 border-purple-100 hover:bg-purple-100'
+          }`}
+        >
+          Role: {activeProfile.role}
+        </button>
       </div>
 
       {/* Available Balance - SMALLER */}
@@ -121,7 +122,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         </div>
       </motion.div>
 
-      {/* Market Actions - REDUCED PADDING WITH NEW COLORS */}
+      {/* Market Actions - WITH SHADOWS */}
       <div className="px-4 mt-4">
         <h3 className="text-[10px] font-sans font-bold uppercase tracking-wider text-slate-400 mb-2">Market Actions</h3>
         <motion.div
@@ -131,16 +132,16 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
           className="grid grid-cols-2 gap-2"
         >
-          {/* Trade - Green */}
+          {/* Trade - Green with Briefcase icon */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
+            whileHover={{ y: -2, scale: 1.01 }}
             onClick={() => onNavigateTab('trade')}
-            className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
+            className="p-3 bg-white border border-slate-100 hover:border-green-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0">
-                <ArrowUpRight className="w-4 h-4" />
+              <div className="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                <Briefcase className="w-4 h-4" />
               </div>
               <div>
                 <span className="block text-[11px] font-sans font-bold text-slate-800">Trade</span>
@@ -153,12 +154,12 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           {/* My Store - Orange */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
+            whileHover={{ y: -2, scale: 1.01 }}
             onClick={onOpenStoreUpgrade}
-            className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
+            className="p-3 bg-white border border-slate-100 hover:border-orange-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0 shadow-sm">
                 <Store className="w-4 h-4" />
               </div>
               <div>
@@ -172,12 +173,12 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           {/* Chats - Blue */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
+            whileHover={{ y: -2, scale: 1.01 }}
             onClick={() => onNavigateTab('chat')}
-            className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
+            className="p-3 bg-white border border-slate-100 hover:border-blue-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div>
@@ -191,12 +192,12 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           {/* Pending Trades - Yellow */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
+            whileHover={{ y: -2, scale: 1.01 }}
             onClick={() => onNavigateTab('trade')}
-            className="p-3 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-xl flex items-center justify-between cursor-pointer transition-colors"
+            className="p-3 bg-white border border-slate-100 hover:border-yellow-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0 shadow-sm">
                 <Clock className="w-4 h-4" />
               </div>
               <div>
@@ -219,7 +220,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         <motion.div
           whileHover={{ scale: 1.01 }}
           onClick={() => setReferModalOpen(true)}
-          className="bg-purple-600 text-white rounded-xl px-4 py-3 flex items-center justify-between cursor-pointer relative overflow-hidden shadow-md hover:opacity-95 transition-opacity"
+          className="bg-purple-600 text-white rounded-xl px-4 py-3 flex items-center justify-between cursor-pointer relative overflow-hidden shadow-md hover:shadow-lg transition-shadow"
         >
           <div className="absolute top-2 right-12 w-8 h-8 bg-purple-500 rounded-full opacity-30" />
           <div className="absolute bottom-1 right-20 w-4 h-4 bg-purple-400 rounded-full opacity-20" />
@@ -252,7 +253,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={onOpenDeposit}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:bg-purple-100 transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Download className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Deposit</span>
@@ -264,7 +265,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={onOpenTransfer}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:bg-purple-100 transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Share2 className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Transfer</span>
@@ -276,7 +277,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={() => setQuickTransferOpen(true)}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:bg-purple-100 transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Phone className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Airtime</span>
@@ -288,7 +289,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={() => setQuickTransferOpen(true)}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:bg-purple-100 transition-colors">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Wifi className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Data</span>
@@ -321,7 +322,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
               variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
               whileHover={{ y: -2 }}
               onClick={() => onNavigateTab('market')}
-              className="bg-white border border-slate-100 rounded-xl overflow-hidden shadow-xs cursor-pointer flex flex-col justify-between"
+              className="bg-white border border-slate-100 rounded-xl overflow-hidden shadow-xs hover:shadow-md cursor-pointer flex flex-col justify-between transition-shadow"
             >
               <div className="aspect-square w-full bg-slate-50 relative overflow-hidden">
                 <img
@@ -345,7 +346,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         <div className="px-4 mt-4">
           <button 
             onClick={onNavigateToLanding}
-            className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-sans font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-sans font-bold text-xs rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-purple-400" /> View Marketing Landing Page
           </button>
@@ -381,8 +382,8 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                   }}
                   className={`w-full p-4 rounded-xl border text-left flex items-start gap-3 transition-all cursor-pointer ${
                     activeProfile.role === 'buyer'
-                      ? 'border-purple-600 bg-purple-50/50'
-                      : 'border-slate-100 hover:bg-slate-50 bg-white'
+                      ? 'border-purple-600 bg-purple-50/50 shadow-sm'
+                      : 'border-slate-100 hover:bg-slate-50 bg-white hover:shadow-sm'
                   }`}
                 >
                   <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'buyer' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
@@ -403,8 +404,8 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                   }}
                   className={`w-full p-4 rounded-xl border text-left flex items-start gap-3 transition-all cursor-pointer ${
                     activeProfile.role === 'seller'
-                      ? 'border-purple-600 bg-purple-50/50'
-                      : 'border-slate-100 hover:bg-slate-50 bg-white'
+                      ? 'border-purple-600 bg-purple-50/50 shadow-sm'
+                      : 'border-slate-100 hover:bg-slate-50 bg-white hover:shadow-sm'
                   }`}
                 >
                   <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'seller' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
@@ -467,7 +468,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                   alert('Referral link copied to clipboard!');
                   setReferModalOpen(false);
                 }}
-                className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-xl shadow-md transition-all cursor-pointer"
+                className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
                 Copy & Share Link
               </button>
