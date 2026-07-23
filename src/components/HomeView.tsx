@@ -33,7 +33,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setRoleModalOpen(true)}
-            className="w-10 h-10 rounded-full bg-purple-100 border border-purple-200 text-purple-600 font-sans font-bold text-sm flex items-center justify-center cursor-pointer hover:bg-purple-200 transition-colors"
+            className="w-10 h-10 rounded-full bg-purple-100 border border-purple-200 text-purple-600 font-sans font-bold text-sm flex items-center justify-center cursor-pointer hover:bg-purple-200 transition-colors shadow-sm"
           >
             {activeProfile.name.charAt(0).toUpperCase()}
           </button>
@@ -50,7 +50,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
 
         <button 
           onClick={() => setRoleModalOpen(true)}
-          className={`text-[10px] font-sans font-extrabold px-2.5 py-1 rounded-full border cursor-pointer capitalize transition-colors ${
+          className={`text-[10px] font-sans font-extrabold px-2.5 py-1 rounded-full border cursor-pointer capitalize transition-colors shadow-sm ${
             isSeller 
               ? 'bg-green-50 text-green-600 border-green-200 hover:bg-green-100' 
               : 'bg-purple-50 text-purple-600 border-purple-100 hover:bg-purple-100'
@@ -96,7 +96,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
 
           <div className="grid grid-cols-2 gap-1.5 mt-2">
             <div className="bg-white/5 rounded-xl px-2 py-1.5 border border-white/5 flex items-center gap-1.5">
-              <div className="p-0.5 bg-blue-500/10 text-blue-400 rounded-lg">
+              <div className="p-0.5 bg-blue-500/10 text-blue-400 rounded-lg shadow-sm">
                 <ArrowDownLeft className="w-3 h-3 stroke-[2.5]" />
               </div>
               <div>
@@ -108,7 +108,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             </div>
 
             <div className="bg-white/5 rounded-xl px-2 py-1.5 border border-white/5 flex items-center gap-1.5">
-              <div className="p-0.5 bg-amber-500/10 text-amber-400 rounded-lg">
+              <div className="p-0.5 bg-amber-500/10 text-amber-400 rounded-lg shadow-sm">
                 <ArrowUpRight className="w-3 h-3 stroke-[2.5]" />
               </div>
               <div>
@@ -140,7 +140,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-green-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 shadow-md">
                 <Briefcase className="w-4 h-4" />
               </div>
               <div>
@@ -159,7 +159,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-orange-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shrink-0 shadow-md">
                 <Store className="w-4 h-4" />
               </div>
               <div>
@@ -178,7 +178,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-blue-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md">
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div>
@@ -197,7 +197,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             className="p-3 bg-white border border-slate-100 hover:border-yellow-300 shadow-md hover:shadow-lg rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0 shadow-md">
                 <Clock className="w-4 h-4" />
               </div>
               <div>
@@ -226,7 +226,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
           <div className="absolute bottom-1 right-20 w-4 h-4 bg-purple-400 rounded-full opacity-20" />
 
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-white">
+            <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-white shadow-sm">
               <Gift className="w-4 h-4" />
             </div>
             <div>
@@ -253,7 +253,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={onOpenDeposit}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Download className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Deposit</span>
@@ -265,7 +265,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={onOpenTransfer}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Share2 className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Transfer</span>
@@ -277,7 +277,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={() => setQuickTransferOpen(true)}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Phone className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Airtime</span>
@@ -289,7 +289,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
             onClick={() => setQuickTransferOpen(true)}
             className="flex flex-col items-center gap-1.5 group cursor-pointer focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-xs group-hover:shadow-md group-hover:bg-purple-100 transition-all">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:bg-purple-100 transition-all">
               <Wifi className="w-4.5 h-4.5 stroke-[2.5]" />
             </div>
             <span className="text-[10px] font-sans font-semibold text-slate-700">Data</span>
@@ -386,7 +386,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                       : 'border-slate-100 hover:bg-slate-50 bg-white hover:shadow-sm'
                   }`}
                 >
-                  <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'buyer' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'buyer' ? 'bg-purple-600 text-white shadow-sm' : 'bg-slate-100 text-slate-500'}`}>
                     <ShoppingCart className="w-4 h-4" />
                   </div>
                   <div>
@@ -408,7 +408,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                       : 'border-slate-100 hover:bg-slate-50 bg-white hover:shadow-sm'
                   }`}
                 >
-                  <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'seller' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`p-2 rounded-xl shrink-0 ${activeProfile.role === 'seller' ? 'bg-purple-600 text-white shadow-sm' : 'bg-slate-100 text-slate-500'}`}>
                     <Store className="w-4 h-4" />
                   </div>
                   <div>
@@ -449,7 +449,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="w-16 h-16 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mx-auto shadow-md">
                 <Gift className="w-8 h-8" />
               </div>
 
@@ -458,7 +458,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
                 <p className="text-xs font-sans text-slate-500 mt-1">Share this with friends in Lagos, Abuja and beyond to earn ₦500 each!</p>
               </div>
 
-              <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl font-mono text-base font-bold text-slate-700 select-all">
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl font-mono text-base font-bold text-slate-700 select-all shadow-inner">
                 SHOPAFFAIR-{activeProfile.username.toUpperCase()}-REFER
               </div>
 
