@@ -379,7 +379,7 @@ export default function MarketView({
         {isLoggedIn ? (
           <div className="flex items-center justify-between mb-2 gap-2">
             <div className="flex items-center gap-2 bg-[#F5F3FF] border border-[#7C3AED]/10 rounded-lg px-2 py-1 flex-1 max-w-[70%] shadow-[0_2px_8px_rgba(124,58,237,0.05)]">
-              <div className="w-6 h-6 rounded-lg bg-[#F5F3FF] border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] shrink-0">
+              <div className="w-6 h-6 rounded-lg bg-[#F5F3FF] border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] shrink-0 shadow-sm">
                 <Wallet className="w-3 h-3" />
               </div>
               <div className="flex-1 min-w-0">
@@ -403,14 +403,14 @@ export default function MarketView({
                 onClick={() => {
                   alert("Your saved favorites lists will appear here.");
                 }}
-                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors cursor-pointer shadow-sm hover:shadow-md"
               >
                 <Heart className="w-3.5 h-3.5" />
               </button>
 
               <button
                 onClick={() => setCartOpen(true)}
-                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer"
+                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer shadow-sm hover:shadow-md"
               >
                 <ShoppingCart className="w-3.5 h-3.5" />
                 {cartCount > 0 && (
@@ -458,7 +458,7 @@ export default function MarketView({
                     key={index}
                     onClick={() => goToSlide(index)}
                     className={`h-1 rounded-full transition-all duration-300 ${
-                      index === currentSlide ? 'w-3 bg-[#7C3AED]' : 'w-1 bg-slate-300'
+                      index === currentSlide ? 'w-3 bg-[#7C3AED] shadow-sm' : 'w-1 bg-slate-300'
                     }`}
                   />
                 ))}
@@ -467,7 +467,7 @@ export default function MarketView({
 
             <button
               onClick={() => setCartOpen(true)}
-              className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer ml-1"
+              className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer shadow-sm hover:shadow-md ml-1"
             >
               <ShoppingCart className="w-3.5 h-3.5" />
               {cartCount > 0 && (
@@ -487,19 +487,19 @@ export default function MarketView({
                 <input
                   value={accountDraft}
                   onChange={(e) => setAccountDraft(e.target.value)}
-                  className="w-28 px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-800 bg-slate-50 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-[#7C3AED]/30"
+                  className="w-28 px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-800 bg-slate-50 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-[#7C3AED]/30 shadow-inner"
                 />
-                <button onClick={saveAccountNumber} className="text-emerald-600 hover:bg-emerald-50 rounded p-0.5 cursor-pointer">
+                <button onClick={saveAccountNumber} className="text-emerald-600 hover:bg-emerald-50 rounded p-0.5 cursor-pointer shadow-sm hover:shadow-md">
                   <CheckIcon className="w-3 h-3" />
                 </button>
-                <button onClick={cancelAccountEdit} className="text-slate-400 hover:bg-slate-100 rounded p-0.5 cursor-pointer">
+                <button onClick={cancelAccountEdit} className="text-slate-400 hover:bg-slate-100 rounded p-0.5 cursor-pointer shadow-sm hover:shadow-md">
                   <X className="w-3 h-3" />
                 </button>
               </div>
             ) : (
               <button
                 onClick={() => setEditingAccount(true)}
-                className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-700 hover:text-[#7C3AED] transition-colors cursor-pointer"
+                className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-700 hover:text-[#7C3AED] transition-colors cursor-pointer shadow-sm hover:shadow-md px-2 py-0.5 rounded"
               >
                 {accountNumber}
                 <Pencil className="w-2.5 h-2.5 text-slate-400" />
@@ -515,12 +515,12 @@ export default function MarketView({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={isLoggedIn ? "Search products..." : "Search materials..."}
-              className="w-full pl-8 pr-3 py-2 bg-white border border-slate-200 rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] transition-all"
+              className="w-full pl-8 pr-3 py-2 bg-white border border-slate-200 rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] transition-all shadow-sm focus:shadow-md"
             />
             <Search className="absolute left-2.5 top-2 w-3.5 h-3.5 text-slate-400" />
           </div>
           {isLoggedIn && (
-            <button className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 shrink-0 transition-colors cursor-pointer">
+            <button className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 shrink-0 transition-colors cursor-pointer shadow-sm hover:shadow-md">
               <SlidersHorizontal className="w-4 h-4" />
             </button>
           )}
@@ -548,10 +548,10 @@ export default function MarketView({
                           const Icon = hotDeals[hotDealSlide].icon;
                           return <Icon className="w-2.5 h-2.5 text-amber-400" />;
                         })()}
-                        <span className="bg-amber-400 text-black text-[7px] font-black px-1.5 py-0.5 rounded-full tracking-wider">
+                        <span className="bg-amber-400 text-black text-[7px] font-black px-1.5 py-0.5 rounded-full tracking-wider shadow-sm">
                           {hotDeals[hotDealSlide].tag}
                         </span>
-                        <span className="bg-white/20 text-white text-[7px] font-bold px-1.5 py-0.5 rounded-full backdrop-blur-sm">
+                        <span className="bg-white/20 text-white text-[7px] font-bold px-1.5 py-0.5 rounded-full backdrop-blur-sm shadow-sm">
                           {hotDeals[hotDealSlide].tag2}
                         </span>
                       </div>
@@ -560,11 +560,11 @@ export default function MarketView({
                       </h2>
                       <p className="text-[10px] text-white/80 font-semibold mt-0.5">{hotDeals[hotDealSlide].subtitle}</p>
                       <div className="flex items-center gap-2 mt-1.5">
-                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded-full border border-white/10">
+                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded-full border border-white/10 shadow-sm">
                           <Clock className="w-2.5 h-2.5 text-amber-400" />
                           <span className="text-[8px] text-white font-bold">Ends in {hotDeals[hotDealSlide].timeLeft}</span>
                         </div>
-                        <button className="bg-white text-purple-700 text-[8px] font-black px-2 py-0.5 rounded-full shadow-lg hover:bg-purple-50 transition-colors">
+                        <button className="bg-white text-purple-700 text-[8px] font-black px-2 py-0.5 rounded-full shadow-lg hover:shadow-xl transition-all">
                           SHOP NOW →
                         </button>
                       </div>
@@ -588,7 +588,7 @@ export default function MarketView({
                   key={index}
                   onClick={() => goToHotDealSlide(index)}
                   className={`h-1 rounded-full transition-all duration-300 ${
-                    index === hotDealSlide ? 'w-3 bg-white' : 'w-1 bg-white/50'
+                    index === hotDealSlide ? 'w-3 bg-white shadow-sm' : 'w-1 bg-white/50'
                   }`}
                 />
               ))}
@@ -631,7 +631,7 @@ export default function MarketView({
                       <div className="relative flex items-center justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-1">
-                            <span className="text-[5px] font-black text-white bg-white/20 px-1 py-0.5 rounded backdrop-blur-sm">{card.tag}</span>
+                            <span className="text-[5px] font-black text-white bg-white/20 px-1 py-0.5 rounded backdrop-blur-sm shadow-sm">{card.tag}</span>
                           </div>
                           <div className="flex items-center gap-1 mt-0.5">
                             <h3 className="text-xs font-black text-white leading-none">{card.title}</h3>
@@ -651,7 +651,7 @@ export default function MarketView({
                         </div>
                         <div className="flex items-center gap-1">
                           <Icon className="w-3 h-3 text-white/80" />
-                          <button className="bg-white/20 hover:bg-white/30 text-white text-[5px] font-black px-1.5 py-0.5 rounded-full backdrop-blur-sm transition-colors whitespace-nowrap">
+                          <button className="bg-white/20 hover:bg-white/30 text-white text-[5px] font-black px-1.5 py-0.5 rounded-full backdrop-blur-sm transition-colors whitespace-nowrap shadow-sm hover:shadow-md">
                             {card.buttonText}
                           </button>
                         </div>
@@ -669,7 +669,7 @@ export default function MarketView({
                   key={index}
                   onClick={() => goToFeatureSlide(index)}
                   className={`h-1 rounded-full transition-all duration-300 ${
-                    index === featureSlide ? 'w-2.5 bg-purple-600' : 'w-1 bg-slate-300'
+                    index === featureSlide ? 'w-2.5 bg-purple-600 shadow-sm' : 'w-1 bg-slate-300'
                   }`}
                 />
               ))}
@@ -692,23 +692,23 @@ export default function MarketView({
         </div>
 
         {isLoggedIn && (
-          <div className="bg-[#F4F4F6] p-0.5 rounded-lg flex w-full mb-3">
+          <div className="bg-[#F4F4F6] p-0.5 rounded-lg flex w-full mb-3 shadow-inner">
             <button
               onClick={() => setMarketTab('supply')}
-              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer ${
+              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer shadow-sm ${
                 marketTab === 'supply'
-                  ? 'bg-white text-slate-900 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-800'
+                  ? 'bg-white text-slate-900 shadow-md'
+                  : 'text-slate-500 hover:text-slate-800 hover:shadow-sm'
               }`}
             >
               Market (Supply)
             </button>
             <button
               onClick={() => setMarketTab('demands')}
-              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer ${
+              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer shadow-sm ${
                 marketTab === 'demands'
-                  ? 'bg-white text-slate-900 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-800'
+                  ? 'bg-white text-slate-900 shadow-md'
+                  : 'text-slate-500 hover:text-slate-800 hover:shadow-sm'
               }`}
             >
               Demands (Requests)
@@ -721,7 +721,7 @@ export default function MarketView({
             {activeGroup && (
               <button
                 onClick={goBackToGroups}
-                className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer shrink-0"
+                className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer shrink-0 shadow-sm hover:shadow-md"
               >
                 <ChevronLeft className="w-3 h-3" />
               </button>
@@ -735,9 +735,9 @@ export default function MarketView({
             <div className="grid grid-cols-4 gap-1.5 mb-2">
               <button
                 onClick={() => { setSelectedCategory('Trending'); setActiveGroup(null); }}
-                className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer ${
+                className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer shadow-sm hover:shadow-md ${
                   selectedCategory === 'Trending' && !activeGroup
-                    ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-[0_2px_8px_rgba(124,58,237,0.06)]'
+                    ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-md'
                     : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
                 }`}
               >
@@ -753,7 +753,7 @@ export default function MarketView({
                   <button
                     key={group.name}
                     onClick={() => openGroup(group.name)}
-                    className="flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border border-slate-100 bg-white text-[#1A1A1A] hover:bg-slate-50 transition-all cursor-pointer"
+                    className="flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border border-slate-100 bg-white text-[#1A1A1A] hover:bg-slate-50 transition-all cursor-pointer shadow-sm hover:shadow-md"
                   >
                     <GroupIcon className="w-3.5 h-3.5 mb-0.5 text-slate-600" />
                     <span className="text-[8px] font-sans font-bold tracking-tight text-slate-700 text-center leading-tight">
@@ -772,9 +772,9 @@ export default function MarketView({
                   <button
                     key={sub.name}
                     onClick={() => selectSubcategory(sub.name)}
-                    className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer ${
+                    className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer shadow-sm hover:shadow-md ${
                       isActive
-                        ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-[0_2px_8px_rgba(124,58,237,0.06)]'
+                        ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-md'
                         : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
                     }`}
                   >
@@ -806,10 +806,10 @@ export default function MarketView({
                     <div
                       key={prod.id}
                       onClick={() => setSelectedProduct(prod)}
-                      className="bg-white border border-slate-100/90 rounded-lg overflow-hidden shadow-2xs cursor-pointer flex flex-col justify-between hover:border-slate-200 transition-all relative"
+                      className="bg-white border border-slate-100/90 rounded-lg overflow-hidden shadow-md hover:shadow-xl cursor-pointer flex flex-col justify-between hover:border-slate-200 transition-all relative"
                     >
                       {ownListing && (
-                        <span className="absolute top-1.5 left-1.5 z-10 bg-slate-900/80 text-white text-[7px] font-sans font-black px-1.5 py-0.5 rounded-full tracking-wider backdrop-blur-xs">
+                        <span className="absolute top-1.5 left-1.5 z-10 bg-slate-900/80 text-white text-[7px] font-sans font-black px-1.5 py-0.5 rounded-full tracking-wider backdrop-blur-xs shadow-sm">
                           YOUR LISTING
                         </span>
                       )}
@@ -842,7 +842,7 @@ export default function MarketView({
                           </span>
                           {ownListing ? (
                             <div
-                              className="w-6 h-6 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-xs"
+                              className="w-6 h-6 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-sm"
                               title="You can't buy your own listing"
                             >
                               <Lock className="w-2.5 h-2.5" />
@@ -853,7 +853,7 @@ export default function MarketView({
                                 e.stopPropagation();
                                 onAddToCart(prod);
                               }}
-                              className="w-6 h-6 bg-[#7C3AED] hover:bg-purple-700 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer shadow-xs"
+                              className="w-6 h-6 bg-[#7C3AED] hover:bg-purple-700 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer shadow-md hover:shadow-lg"
                             >
                               <Plus className="w-3 h-3 stroke-[2.5]" />
                             </button>
@@ -865,7 +865,7 @@ export default function MarketView({
                 })}
               </div>
             ) : (
-              <div className="text-center py-12 px-4 bg-slate-50/50 rounded-lg border border-dashed border-slate-150">
+              <div className="text-center py-12 px-4 bg-slate-50/50 rounded-lg border border-dashed border-slate-150 shadow-inner">
                 <ShoppingBag className="w-8 h-8 text-slate-300 mx-auto mb-1" />
                 <p className="text-[10px] font-sans text-slate-500 font-bold">No products found under this category.</p>
               </div>
@@ -883,18 +883,18 @@ export default function MarketView({
                   <div
                     key={demand.id}
                     onClick={() => setSelectedDemand(demand)}
-                    className="bg-white border border-slate-100 rounded-lg p-2 shadow-2xs hover:border-slate-200 transition-all flex gap-2 cursor-pointer"
+                    className="bg-white border border-slate-100 rounded-lg p-2 shadow-md hover:shadow-xl transition-all flex gap-2 cursor-pointer"
                   >
                     <img
                       src={demand.image}
                       alt={demand.title}
-                      className="w-14 h-14 rounded-lg object-cover border border-slate-100 shrink-0"
+                      className="w-14 h-14 rounded-lg object-cover border border-slate-100 shrink-0 shadow-sm"
                     />
 
                     <div className="flex-1 min-w-0 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center justify-between gap-1">
-                          <span className="text-[8px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-1.5 py-0.5 rounded">
+                          <span className="text-[8px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-1.5 py-0.5 rounded shadow-sm">
                             {demand.category}
                           </span>
                           <span className="text-[8px] text-slate-400 font-medium">@{demand.buyerUsername}</span>
@@ -914,7 +914,7 @@ export default function MarketView({
                             e.stopPropagation();
                             onStartChatWithSeller(demand.buyerUsername, demand.buyerName);
                           }}
-                          className="text-[8px] font-sans font-bold text-white bg-[#7C3AED] hover:bg-purple-700 px-2 py-0.5 rounded-md transition-colors shadow-2xs"
+                          className="text-[8px] font-sans font-bold text-white bg-[#7C3AED] hover:bg-purple-700 px-2 py-0.5 rounded-md transition-colors shadow-md hover:shadow-lg"
                         >
                           Send Offer
                         </button>
@@ -924,7 +924,7 @@ export default function MarketView({
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 px-4 bg-slate-50/50 rounded-lg border border-dashed border-slate-150">
+              <div className="text-center py-12 px-4 bg-slate-50/50 rounded-lg border border-dashed border-slate-150 shadow-inner">
                 <Tag className="w-8 h-8 text-slate-300 mx-auto mb-1" />
                 <p className="text-[10px] font-sans text-slate-500 font-bold">No demands found under this category.</p>
               </div>
@@ -954,12 +954,12 @@ export default function MarketView({
             >
               <div className="p-4 border-b border-slate-100 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <ShoppingCart className="w-5 h-5 text-[#7C3AED]" />
+                  <ShoppingCart className="w-5 h-5 text-[#7C3AED] shadow-sm" />
                   <h3 className="text-sm font-sans font-black text-slate-900 tracking-tight">Your Cart ({cartCount})</h3>
                 </div>
                 <button
                   onClick={() => setCartOpen(false)}
-                  className="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer shadow-sm hover:shadow-md"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -968,11 +968,11 @@ export default function MarketView({
               <div className="flex-1 overflow-y-auto p-4 space-y-3.5 no-scrollbar">
                 {cart.length > 0 ? (
                   cart.map((item) => (
-                    <div key={item.product.id} className="flex items-center gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100/50">
+                    <div key={item.product.id} className="flex items-center gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100/50 shadow-sm hover:shadow-md transition-shadow">
                       <img
                         src={item.product.image}
                         alt={item.product.title}
-                        className="w-12 h-12 rounded-lg object-cover border border-slate-100 shrink-0"
+                        className="w-12 h-12 rounded-lg object-cover border border-slate-100 shrink-0 shadow-sm"
                       />
                       <div className="flex-1 min-w-0">
                         <span className="block text-xs font-bold text-slate-800 truncate">{item.product.title}</span>
@@ -981,14 +981,14 @@ export default function MarketView({
                         <div className="flex items-center gap-2 mt-1.5">
                           <button
                             onClick={() => onUpdateCartQty(item.product.id, -1)}
-                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer"
+                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer shadow-sm hover:shadow-md"
                           >
                             <Minus className="w-2.5 h-2.5" />
                           </button>
                           <span className="text-[11px] font-sans font-bold text-slate-700 w-4 text-center">{item.quantity}</span>
                           <button
                             onClick={() => onUpdateCartQty(item.product.id, 1)}
-                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer"
+                            className="w-5 h-5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 rounded-md flex items-center justify-center cursor-pointer shadow-sm hover:shadow-md"
                           >
                             <Plus className="w-2.5 h-2.5" />
                           </button>
@@ -997,7 +997,7 @@ export default function MarketView({
 
                       <button
                         onClick={() => onRemoveFromCart(item.product.id)}
-                        className="p-1.5 text-rose-500 hover:bg-rose-50 hover:text-rose-600 rounded-lg transition-colors shrink-0 cursor-pointer"
+                        className="p-1.5 text-rose-500 hover:bg-rose-50 hover:text-rose-600 rounded-lg transition-colors shrink-0 cursor-pointer shadow-sm hover:shadow-md"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -1005,14 +1005,14 @@ export default function MarketView({
                   ))
                 ) : (
                   <div className="text-center py-16 space-y-3">
-                    <ShoppingBag className="w-12 h-12 text-slate-300 mx-auto" />
+                    <ShoppingBag className="w-12 h-12 text-slate-300 mx-auto shadow-sm" />
                     <p className="text-xs text-slate-400 font-bold">Your shopping cart is currently empty.</p>
                   </div>
                 )}
               </div>
 
               {cart.length > 0 && (
-                <div className="p-4 border-t border-slate-100 bg-white space-y-3">
+                <div className="p-4 border-t border-slate-100 bg-white space-y-3 shadow-inner">
                   <div className="flex items-center justify-between text-xs font-sans">
                     <span className="font-bold text-slate-500">Cart Subtotal:</span>
                     <span className="font-black text-slate-950 text-base">₦{cartTotal.toLocaleString()}</span>
@@ -1023,7 +1023,7 @@ export default function MarketView({
                       setCartOpen(false);
                       onProceedToCheckout();
                     }}
-                    className="w-full py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-black text-xs uppercase tracking-wider rounded-lg shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-black text-xs uppercase tracking-wider rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     Proceed to Checkout <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -1048,13 +1048,13 @@ export default function MarketView({
 
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
+                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer shadow-sm hover:shadow-md"
               >
                 <X className="w-5 h-5" />
               </button>
 
               <div className="overflow-y-auto px-6 pb-28 space-y-4 no-scrollbar flex-1">
-                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100">
+                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100 shadow-sm">
                   <img
                     src={selectedProduct.image}
                     alt={selectedProduct.title}
@@ -1063,7 +1063,7 @@ export default function MarketView({
                 </div>
 
                 {isOwnListing(selectedProduct) && (
-                  <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-lg flex items-center gap-2">
+                  <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-lg flex items-center gap-2 shadow-sm">
                     <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                     <p className="text-[10px] font-sans text-slate-500 font-semibold">
                       This is your own listing — you can't buy or chat about it as a customer.
@@ -1071,9 +1071,9 @@ export default function MarketView({
                   </div>
                 )}
 
-                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40">
+                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40 shadow-sm">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center shadow-sm">
                       {selectedProduct.sellerName.charAt(0)}
                     </div>
                     <div>
@@ -1088,7 +1088,7 @@ export default function MarketView({
                 </div>
 
                 <div className="space-y-1">
-                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">
+                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md shadow-sm">
                     {selectedProduct.category}
                   </span>
                   <h2 className="text-base font-sans font-black text-slate-900 leading-snug">
@@ -1098,7 +1098,7 @@ export default function MarketView({
                     <span className="text-lg font-sans font-black text-slate-900">
                       ₦{selectedProduct.price.toLocaleString()}
                     </span>
-                    <span className="text-[10px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
+                    <span className="text-[10px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-200 shadow-sm">
                       {selectedProduct.condition}
                     </span>
                   </div>
@@ -1112,9 +1112,9 @@ export default function MarketView({
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 flex gap-3">
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 flex gap-3 shadow-inner">
                 {isOwnListing(selectedProduct) ? (
-                  <div className="flex-1 py-3 bg-slate-50 text-slate-400 font-sans font-bold text-xs rounded-lg border border-slate-200/50 text-center flex items-center justify-center gap-1.5">
+                  <div className="flex-1 py-3 bg-slate-50 text-slate-400 font-sans font-bold text-xs rounded-lg border border-slate-200/50 text-center flex items-center justify-center gap-1.5 shadow-sm">
                     <Lock className="w-3.5 h-3.5" /> This is your own listing
                   </div>
                 ) : (
@@ -1124,7 +1124,7 @@ export default function MarketView({
                         onStartChatWithSeller(selectedProduct.sellerUsername, selectedProduct.sellerName);
                         setSelectedProduct(null);
                       }}
-                      className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-colors"
+                      className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-colors shadow-sm hover:shadow-md"
                     >
                       Chat with Seller
                     </button>
@@ -1134,7 +1134,7 @@ export default function MarketView({
                         setSelectedProduct(null);
                         setCartOpen(true);
                       }}
-                      className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-md cursor-pointer text-center transition-all"
+                      className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-lg hover:shadow-xl cursor-pointer text-center transition-all"
                     >
                       Add to Cart
                     </button>
@@ -1160,13 +1160,13 @@ export default function MarketView({
 
               <button
                 onClick={() => setSelectedDemand(null)}
-                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
+                className="absolute top-3 right-4 p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer shadow-sm hover:shadow-md"
               >
                 <X className="w-5 h-5" />
               </button>
 
               <div className="overflow-y-auto px-6 pb-28 space-y-4 no-scrollbar flex-1">
-                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100">
+                <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-50 border border-slate-100 shadow-sm">
                   <img
                     src={selectedDemand.image}
                     alt={selectedDemand.title}
@@ -1174,9 +1174,9 @@ export default function MarketView({
                   />
                 </div>
 
-                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40">
+                <div className="flex items-center justify-between p-3 bg-purple-50/15 rounded-lg border border-purple-100/40 shadow-sm">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-[#7C3AED] text-white font-sans font-black text-xs flex items-center justify-center shadow-sm">
                       {selectedDemand.buyerName.charAt(0)}
                     </div>
                     <div>
@@ -1185,14 +1185,14 @@ export default function MarketView({
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded border border-purple-250">
+                    <span className="text-[10px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded border border-purple-250 shadow-sm">
                       {selectedDemand.status}
                     </span>
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">
+                  <span className="inline-block text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md shadow-sm">
                     {selectedDemand.category}
                   </span>
                   <h2 className="text-base font-sans font-black text-slate-900 leading-snug">
@@ -1215,10 +1215,10 @@ export default function MarketView({
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 flex gap-3">
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 flex gap-3 shadow-inner">
                 <button
                   onClick={() => setSelectedDemand(null)}
-                  className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-colors"
+                  className="flex-1 py-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-sans font-bold text-xs rounded-lg border border-slate-200/50 cursor-pointer text-center transition-colors shadow-sm hover:shadow-md"
                 >
                   Close
                 </button>
@@ -1227,7 +1227,7 @@ export default function MarketView({
                     onStartChatWithSeller(selectedDemand.buyerUsername, selectedDemand.buyerName);
                     setSelectedDemand(null);
                   }}
-                  className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-md cursor-pointer text-center transition-all"
+                  className="flex-1 py-3 bg-[#7C3AED] hover:bg-purple-700 text-white font-sans font-bold text-xs rounded-lg shadow-lg hover:shadow-xl cursor-pointer text-center transition-all"
                 >
                   Send Offer Details
                 </button>
