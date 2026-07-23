@@ -80,7 +80,7 @@ const hotDeals = [
   {
     id: 'hot_1',
     title: 'GET UP TO 25% OFF',
-    subtitle: 'Limited time offer. T&Cs apply',
+    subtitle: 'Limited time offer',
     discount: '25%',
     bgGradient: 'from-purple-600 via-purple-700 to-indigo-700',
     tag: 'HOT DEAL',
@@ -128,7 +128,7 @@ const hotDeals = [
   {
     id: 'hot_4',
     title: 'PREMIUM DEALS',
-    subtitle: 'Luxury items at best prices',
+    subtitle: 'Luxury items',
     discount: '30%',
     bgGradient: 'from-amber-600 via-orange-700 to-yellow-700',
     tag: 'PREMIUM',
@@ -143,17 +143,17 @@ const hotDeals = [
   }
 ];
 
-// Feature Cards Carousel Data - ALL 4 CARDS
+// Feature Cards Carousel Data - COMPACT
 const featureCards = [
   {
     id: 'feature_1',
-    title: 'UP TO 35%',
-    subtitle: '100% no-sugar',
-    brand: 'WILLIAMS LAWSON',
+    title: '35%',
+    subtitle: 'no-sugar',
+    brand: 'WILLIAMS',
     product: 'Coca-Cola',
     bgGradient: 'from-emerald-500 to-emerald-700',
     tag: 'UP TO',
-    buttonText: 'SHOP NOW',
+    buttonText: 'SHOP',
     icon: Wine
   },
   {
@@ -163,28 +163,28 @@ const featureCards = [
     discount: '25%',
     bgGradient: 'from-amber-500 to-orange-600',
     tag: 'PREMIUM',
-    buttonText: 'BUY NOW',
+    buttonText: 'BUY',
     icon: Beer
   },
   {
     id: 'feature_3',
-    title: 'UP TO 30%',
-    subtitle: 'Smartphones & Tablets',
-    brand: 'TECH SALE',
-    product: 'Samsung • Apple',
+    title: '30%',
+    subtitle: 'Tech Sale',
+    brand: 'SAMSUNG',
+    product: 'Apple',
     bgGradient: 'from-blue-500 to-purple-600',
-    tag: 'TECH DEAL',
-    buttonText: 'SHOP NOW',
+    tag: 'DEAL',
+    buttonText: 'SHOP',
     icon: PhoneIcon
   },
   {
     id: 'feature_4',
-    title: 'FASHION SALE',
-    subtitle: 'Summer collection',
+    title: 'FASHION',
+    subtitle: 'Summer',
     discount: '40%',
     bgGradient: 'from-pink-500 to-rose-600',
     tag: 'TRENDING',
-    buttonText: 'VIEW ALL',
+    buttonText: 'VIEW',
     icon: ShirtIcon
   }
 ];
@@ -377,44 +377,44 @@ export default function MarketView({
 
       <div className="px-4 pt-4 pb-2 sticky top-0 bg-[#F8F9FC] z-10 border-b border-slate-50">
         {isLoggedIn ? (
-          <div className="flex items-center justify-between mb-3 gap-2">
-            <div className="flex items-center gap-2 bg-[#F5F3FF] border border-[#7C3AED]/10 rounded-lg px-2.5 py-1.5 flex-1 max-w-[70%] shadow-[0_2px_8px_rgba(124,58,237,0.05)]">
-              <div className="w-7 h-7 rounded-lg bg-[#F5F3FF] border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] shrink-0">
-                <Wallet className="w-3.5 h-3.5" />
+          <div className="flex items-center justify-between mb-2 gap-2">
+            <div className="flex items-center gap-2 bg-[#F5F3FF] border border-[#7C3AED]/10 rounded-lg px-2 py-1 flex-1 max-w-[70%] shadow-[0_2px_8px_rgba(124,58,237,0.05)]">
+              <div className="w-6 h-6 rounded-lg bg-[#F5F3FF] border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] shrink-0">
+                <Wallet className="w-3 h-3" />
               </div>
               <div className="flex-1 min-w-0">
-                <span className="block text-[9px] font-sans font-semibold text-slate-400 tracking-wide uppercase leading-none">Wallet Balance</span>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <span className="text-[12px] font-sans font-black text-slate-950 truncate leading-none">
+                <span className="block text-[8px] font-sans font-semibold text-slate-400 tracking-wide uppercase leading-none">Wallet Balance</span>
+                <div className="flex items-center gap-1 mt-0.5">
+                  <span className="text-[11px] font-sans font-black text-slate-950 truncate leading-none">
                     {showBalance ? `₦${(activeProfile?.walletBalance ?? 82000).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '₦••••••'}
                   </span>
                   <button
                     onClick={() => setShowBalance(!showBalance)}
                     className="text-slate-400 hover:text-slate-600 focus:outline-none shrink-0"
                   >
-                    {showBalance ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
+                    {showBalance ? <EyeOff className="w-2.5 h-2.5" /> : <Eye className="w-2.5 h-2.5" />}
                   </button>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={() => {
                   alert("Your saved favorites lists will appear here.");
                 }}
-                className="w-9 h-9 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors cursor-pointer"
               >
-                <Heart className="w-4 h-4" />
+                <Heart className="w-3.5 h-3.5" />
               </button>
 
               <button
                 onClick={() => setCartOpen(true)}
-                className="w-9 h-9 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer"
+                className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer"
               >
-                <ShoppingCart className="w-4 h-4" />
+                <ShoppingCart className="w-3.5 h-3.5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[9px] font-sans font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-xs border border-white">
+                  <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[8px] font-sans font-extrabold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs border border-white">
                     {cartCount}
                   </span>
                 )}
@@ -422,29 +422,29 @@ export default function MarketView({
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-3">
             <div className="flex-1">
               {/* Carousel Header - replaces static title */}
-              <div className="relative h-12 overflow-hidden">
+              <div className="relative h-10 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
-                    initial={{ y: 30, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -30, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
                     className="absolute inset-0 flex flex-col justify-center"
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                       {(() => {
                         const Icon = carouselMessages[currentSlide].icon;
-                        return <Icon className="w-5 h-5 text-purple-600" />;
+                        return <Icon className="w-4 h-4 text-purple-600" />;
                       })()}
-                      <h1 className="text-xl font-sans font-black text-slate-950 tracking-tight leading-none">
+                      <h1 className="text-base font-sans font-black text-slate-950 tracking-tight leading-none">
                         {carouselMessages[currentSlide].text}
                       </h1>
                     </div>
-                    <p className="text-[11px] text-slate-400 font-medium mt-0.5">
+                    <p className="text-[10px] text-slate-400 font-medium mt-0.5">
                       {carouselMessages[currentSlide].subtext}
                     </p>
                   </motion.div>
@@ -452,13 +452,13 @@ export default function MarketView({
               </div>
               
               {/* Carousel dots */}
-              <div className="flex gap-1 mt-1">
+              <div className="flex gap-1 mt-0.5">
                 {carouselMessages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
                     className={`h-1 rounded-full transition-all duration-300 ${
-                      index === currentSlide ? 'w-4 bg-[#7C3AED]' : 'w-1.5 bg-slate-300'
+                      index === currentSlide ? 'w-3 bg-[#7C3AED]' : 'w-1 bg-slate-300'
                     }`}
                   />
                 ))}
@@ -467,11 +467,11 @@ export default function MarketView({
 
             <button
               onClick={() => setCartOpen(true)}
-              className="w-10 h-10 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer ml-2"
+              className="w-8 h-8 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer ml-1"
             >
-              <ShoppingCart className="w-4 h-4" />
+              <ShoppingCart className="w-3.5 h-3.5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[9px] font-sans font-extrabold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
+                <span className="absolute -top-1 -right-1 bg-[#7C3AED] text-white text-[8px] font-sans font-extrabold w-3.5 h-3.5 rounded-full flex items-center justify-center shadow-xs">
                   {cartCount}
                 </span>
               )}
@@ -480,56 +480,56 @@ export default function MarketView({
         )}
 
         {isLoggedIn && (
-          <div className="flex items-center justify-between mb-3 px-0.5">
-            <span className="text-[10px] text-slate-400 font-medium">Account No:</span>
+          <div className="flex items-center justify-between mb-2 px-0.5">
+            <span className="text-[9px] text-slate-400 font-medium">Account No:</span>
             {editingAccount ? (
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1">
                 <input
                   value={accountDraft}
                   onChange={(e) => setAccountDraft(e.target.value)}
-                  className="w-32 px-2 py-1 text-[11px] font-mono font-bold text-slate-800 bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-1 focus:ring-[#7C3AED]/30"
+                  className="w-28 px-1.5 py-0.5 text-[10px] font-mono font-bold text-slate-800 bg-slate-50 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-[#7C3AED]/30"
                 />
-                <button onClick={saveAccountNumber} className="text-emerald-600 hover:bg-emerald-50 rounded-md p-1 cursor-pointer">
-                  <CheckIcon className="w-3.5 h-3.5" />
+                <button onClick={saveAccountNumber} className="text-emerald-600 hover:bg-emerald-50 rounded p-0.5 cursor-pointer">
+                  <CheckIcon className="w-3 h-3" />
                 </button>
-                <button onClick={cancelAccountEdit} className="text-slate-400 hover:bg-slate-100 rounded-md p-1 cursor-pointer">
-                  <X className="w-3.5 h-3.5" />
+                <button onClick={cancelAccountEdit} className="text-slate-400 hover:bg-slate-100 rounded p-0.5 cursor-pointer">
+                  <X className="w-3 h-3" />
                 </button>
               </div>
             ) : (
               <button
                 onClick={() => setEditingAccount(true)}
-                className="flex items-center gap-1.5 text-[11px] font-mono font-bold text-slate-700 hover:text-[#7C3AED] transition-colors cursor-pointer"
+                className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-700 hover:text-[#7C3AED] transition-colors cursor-pointer"
               >
                 {accountNumber}
-                <Pencil className="w-3 h-3 text-slate-400" />
+                <Pencil className="w-2.5 h-2.5 text-slate-400" />
               </button>
             )}
           </div>
         )}
 
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <div className="relative flex-1">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={isLoggedIn ? "Search products, categories..." : "Search materials, categories ..."}
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] transition-all"
+              placeholder={isLoggedIn ? "Search products..." : "Search materials..."}
+              className="w-full pl-8 pr-3 py-2 bg-white border border-slate-200 rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] transition-all"
             />
-            <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-2.5 top-2 w-3.5 h-3.5 text-slate-400" />
           </div>
           {isLoggedIn && (
-            <button className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 shrink-0 transition-colors cursor-pointer">
-              <SlidersHorizontal className="w-4.5 h-4.5" />
+            <button className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 shrink-0 transition-colors cursor-pointer">
+              <SlidersHorizontal className="w-4 h-4" />
             </button>
           )}
         </div>
 
-        {/* WhatsApp-style Ads Section */}
-        <div className="mb-4">
-          {/* Hot Deals Carousel - Main Banner */}
-          <div className="relative overflow-hidden rounded-xl shadow-lg border border-purple-400/20 mb-3">
+        {/* WhatsApp-style Ads Section - COMPACT */}
+        <div className="mb-3">
+          {/* Hot Deals Carousel - Compact Main Banner */}
+          <div className="relative overflow-hidden rounded-xl shadow-lg border border-purple-400/20 mb-2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={hotDealSlide}
@@ -540,38 +540,38 @@ export default function MarketView({
                 className={`relative bg-gradient-to-r ${hotDeals[hotDealSlide].bgGradient} p-0`}
               >
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800')] opacity-10 bg-cover bg-center" />
-                <div className="relative p-4">
+                <div className="relative p-3">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex items-center gap-1.5 mb-0.5">
                         {(() => {
                           const Icon = hotDeals[hotDealSlide].icon;
-                          return <Icon className="w-3 h-3 text-amber-400" />;
+                          return <Icon className="w-2.5 h-2.5 text-amber-400" />;
                         })()}
-                        <span className="bg-amber-400 text-black text-[8px] font-black px-2 py-0.5 rounded-full tracking-wider">
+                        <span className="bg-amber-400 text-black text-[7px] font-black px-1.5 py-0.5 rounded-full tracking-wider">
                           {hotDeals[hotDealSlide].tag}
                         </span>
-                        <span className="bg-white/20 text-white text-[8px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                        <span className="bg-white/20 text-white text-[7px] font-bold px-1.5 py-0.5 rounded-full backdrop-blur-sm">
                           {hotDeals[hotDealSlide].tag2}
                         </span>
                       </div>
-                      <h2 className="text-2xl font-black text-white leading-tight tracking-tight">
+                      <h2 className="text-lg font-black text-white leading-tight tracking-tight">
                         {hotDeals[hotDealSlide].title}
                       </h2>
-                      <p className="text-xs text-white/80 font-semibold mt-1">{hotDeals[hotDealSlide].subtitle}</p>
-                      <div className="flex items-center gap-3 mt-2">
-                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
-                          <Clock className="w-3 h-3 text-amber-400" />
-                          <span className="text-[10px] text-white font-bold">Ends in {hotDeals[hotDealSlide].timeLeft}</span>
+                      <p className="text-[10px] text-white/80 font-semibold mt-0.5">{hotDeals[hotDealSlide].subtitle}</p>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded-full border border-white/10">
+                          <Clock className="w-2.5 h-2.5 text-amber-400" />
+                          <span className="text-[8px] text-white font-bold">Ends in {hotDeals[hotDealSlide].timeLeft}</span>
                         </div>
-                        <button className="bg-white text-purple-700 text-[10px] font-black px-3 py-1 rounded-full shadow-lg hover:bg-purple-50 transition-colors">
+                        <button className="bg-white text-purple-700 text-[8px] font-black px-2 py-0.5 rounded-full shadow-lg hover:bg-purple-50 transition-colors">
                           SHOP NOW →
                         </button>
                       </div>
                     </div>
                     <div className="flex -space-x-2">
-                      {hotDeals[hotDealSlide].images.map((img, i) => (
-                        <div key={i} className="w-12 h-12 rounded-lg border-2 border-white/30 overflow-hidden shadow-md -ml-2 first:ml-0">
+                      {hotDeals[hotDealSlide].images.slice(0, 2).map((img, i) => (
+                        <div key={i} className="w-10 h-10 rounded-lg border-2 border-white/30 overflow-hidden shadow-md -ml-2 first:ml-0">
                           <img src={img} alt="" className="w-full h-full object-cover" />
                         </div>
                       ))}
@@ -581,36 +581,36 @@ export default function MarketView({
               </motion.div>
             </AnimatePresence>
 
-            {/* Hot Deals Navigation Dots */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+            {/* Hot Deals Navigation Dots - Smaller */}
+            <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex gap-1 z-10">
               {hotDeals.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToHotDealSlide(index)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === hotDealSlide ? 'w-5 bg-white' : 'w-1.5 bg-white/50'
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    index === hotDealSlide ? 'w-3 bg-white' : 'w-1 bg-white/50'
                   }`}
                 />
               ))}
             </div>
 
-            {/* Hot Deals Arrows */}
+            {/* Hot Deals Arrows - Smaller */}
             <button
               onClick={() => goToHotDealSlide((hotDealSlide - 1 + hotDeals.length) % hotDeals.length)}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
+              className="absolute left-1.5 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-3 h-3" />
             </button>
             <button
               onClick={() => goToHotDealSlide((hotDealSlide + 1) % hotDeals.length)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3 h-3" />
             </button>
           </div>
 
-          {/* Feature Cards Carousel - ALL 4 FEATURE CARDS */}
-          <div className="relative overflow-hidden mb-3">
+          {/* Feature Cards Carousel - VERY COMPACT */}
+          <div className="relative overflow-hidden mb-2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={featureSlide}
@@ -618,39 +618,43 @@ export default function MarketView({
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -100, opacity: 0 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="grid grid-cols-2 gap-2"
+                className="grid grid-cols-2 gap-1.5"
               >
                 {getVisibleFeatureCards().map((card) => {
                   const Icon = card.icon;
                   return (
                     <div
                       key={card.id}
-                      className={`relative bg-gradient-to-br ${card.bgGradient} rounded-xl overflow-hidden p-3 shadow-md border border-white/20`}
+                      className={`relative bg-gradient-to-br ${card.bgGradient} rounded-lg overflow-hidden px-2 py-1.5 shadow-md border border-white/20`}
                     >
-                      <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full blur-xl" />
-                      <div className="relative">
-                        <span className="text-[8px] font-black text-white bg-white/20 px-1.5 py-0.5 rounded backdrop-blur-sm">{card.tag}</span>
-                        <h3 className="text-xl font-black text-white leading-none mt-1">{card.title}</h3>
-                        {card.subtitle && (
-                          <p className="text-[10px] text-white/90 font-semibold">{card.subtitle}</p>
-                        )}
-                        {card.brand && (
-                          <div className="flex items-center gap-1 mt-1">
-                            <span className="text-[8px] text-white/70">{card.brand}</span>
-                            <span className="text-[8px] text-white/90 font-bold">{card.product}</span>
+                      <div className="absolute top-0 right-0 w-8 h-8 bg-white/10 rounded-full blur-xl" />
+                      <div className="relative flex items-center justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-1">
+                            <span className="text-[5px] font-black text-white bg-white/20 px-1 py-0.5 rounded backdrop-blur-sm">{card.tag}</span>
                           </div>
-                        )}
-                        {card.discount && (
-                          <div className="flex items-center gap-1 mt-1">
-                            <span className="text-[8px] text-white/70">UP TO</span>
-                            <span className="text-lg font-black text-white leading-none">{card.discount}</span>
-                            <span className="text-[8px] text-white/70">OFF</span>
+                          <div className="flex items-center gap-1 mt-0.5">
+                            <h3 className="text-xs font-black text-white leading-none">{card.title}</h3>
+                            {card.discount && (
+                              <span className="text-[8px] font-black text-white/90">OFF</span>
+                            )}
                           </div>
-                        )}
-                        <Icon className="w-5 h-5 text-white/80 mt-1" />
-                        <button className="mt-1.5 bg-white/20 hover:bg-white/30 text-white text-[8px] font-black px-2 py-0.5 rounded-full backdrop-blur-sm transition-colors">
-                          {card.buttonText}
-                        </button>
+                          {card.subtitle && (
+                            <p className="text-[6px] text-white/80 font-semibold leading-tight">{card.subtitle}</p>
+                          )}
+                          {card.brand && (
+                            <div className="flex items-center gap-0.5">
+                              <span className="text-[5px] text-white/60 font-bold">{card.brand}</span>
+                              <span className="text-[5px] text-white/80 font-bold">{card.product}</span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Icon className="w-3 h-3 text-white/80" />
+                          <button className="bg-white/20 hover:bg-white/30 text-white text-[5px] font-black px-1.5 py-0.5 rounded-full backdrop-blur-sm transition-colors whitespace-nowrap">
+                            {card.buttonText}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );
@@ -658,40 +662,40 @@ export default function MarketView({
               </motion.div>
             </AnimatePresence>
 
-            {/* Feature Cards Navigation Dots */}
-            <div className="flex justify-center gap-1.5 mt-2">
+            {/* Feature Cards Navigation Dots - Smaller */}
+            <div className="flex justify-center gap-1 mt-0.5">
               {Array.from({ length: totalFeatureSlides }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToFeatureSlide(index)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === featureSlide ? 'w-4 bg-purple-600' : 'w-1.5 bg-slate-300'
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    index === featureSlide ? 'w-2.5 bg-purple-600' : 'w-1 bg-slate-300'
                   }`}
                 />
               ))}
             </div>
 
-            {/* Feature Cards Arrows */}
+            {/* Feature Cards Arrows - Smaller */}
             <button
               onClick={() => goToFeatureSlide((featureSlide - 1 + totalFeatureSlides) % totalFeatureSlides)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -ml-1 z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -ml-0.5 z-10"
             >
-              <ChevronLeft className="w-3 h-3" />
+              <ChevronLeft className="w-2 h-2" />
             </button>
             <button
               onClick={() => goToFeatureSlide((featureSlide + 1) % totalFeatureSlides)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -mr-1 z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -mr-0.5 z-10"
             >
-              <ChevronRight className="w-3 h-3" />
+              <ChevronRight className="w-2 h-2" />
             </button>
           </div>
         </div>
 
         {isLoggedIn && (
-          <div className="bg-[#F4F4F6] p-1 rounded-lg flex w-full mb-4">
+          <div className="bg-[#F4F4F6] p-0.5 rounded-lg flex w-full mb-3">
             <button
               onClick={() => setMarketTab('supply')}
-              className={`flex-1 py-2 text-center text-xs font-sans font-bold transition-all rounded-md cursor-pointer ${
+              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer ${
                 marketTab === 'supply'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : 'text-slate-500 hover:text-slate-800'
@@ -701,7 +705,7 @@ export default function MarketView({
             </button>
             <button
               onClick={() => setMarketTab('demands')}
-              className={`flex-1 py-2 text-center text-xs font-sans font-bold transition-all rounded-md cursor-pointer ${
+              className={`flex-1 py-1.5 text-center text-[10px] font-sans font-bold transition-all rounded-md cursor-pointer ${
                 marketTab === 'demands'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : 'text-slate-500 hover:text-slate-800'
@@ -713,32 +717,32 @@ export default function MarketView({
         )}
 
         <div>
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-1.5 mb-1.5">
             {activeGroup && (
               <button
                 onClick={goBackToGroups}
-                className="w-6 h-6 rounded-md bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer shrink-0"
+                className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer shrink-0"
               >
-                <ChevronLeft className="w-3.5 h-3.5" />
+                <ChevronLeft className="w-3 h-3" />
               </button>
             )}
-            <h3 className="text-xs font-sans font-bold text-slate-900 tracking-wide">
+            <h3 className="text-[10px] font-sans font-bold text-slate-900 tracking-wide">
               {activeGroup ? activeGroup : 'Categories'}
             </h3>
           </div>
 
           {!activeGroup ? (
-            <div className="grid grid-cols-4 gap-2 mb-2">
+            <div className="grid grid-cols-4 gap-1.5 mb-2">
               <button
                 onClick={() => { setSelectedCategory('Trending'); setActiveGroup(null); }}
-                className={`flex flex-col items-center justify-center py-2 px-1.5 rounded-lg border transition-all cursor-pointer ${
+                className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer ${
                   selectedCategory === 'Trending' && !activeGroup
                     ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-[0_2px_8px_rgba(124,58,237,0.06)]'
                     : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
                 }`}
               >
-                <Flame className={`w-4 h-4 mb-1 ${selectedCategory === 'Trending' ? 'text-[#7C3AED]' : 'text-slate-600'}`} />
-                <span className={`text-[10px] font-sans font-bold tracking-tight ${selectedCategory === 'Trending' ? 'text-[#7C3AED]' : 'text-slate-700'}`}>
+                <Flame className={`w-3.5 h-3.5 mb-0.5 ${selectedCategory === 'Trending' ? 'text-[#7C3AED]' : 'text-slate-600'}`} />
+                <span className={`text-[8px] font-sans font-bold tracking-tight ${selectedCategory === 'Trending' ? 'text-[#7C3AED]' : 'text-slate-700'}`}>
                   Trending
                 </span>
               </button>
@@ -749,10 +753,10 @@ export default function MarketView({
                   <button
                     key={group.name}
                     onClick={() => openGroup(group.name)}
-                    className="flex flex-col items-center justify-center py-2 px-1.5 rounded-lg border border-slate-100 bg-white text-[#1A1A1A] hover:bg-slate-50 transition-all cursor-pointer"
+                    className="flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border border-slate-100 bg-white text-[#1A1A1A] hover:bg-slate-50 transition-all cursor-pointer"
                   >
-                    <GroupIcon className="w-4 h-4 mb-1 text-slate-600" />
-                    <span className="text-[10px] font-sans font-bold tracking-tight text-slate-700 text-center leading-tight">
+                    <GroupIcon className="w-3.5 h-3.5 mb-0.5 text-slate-600" />
+                    <span className="text-[8px] font-sans font-bold tracking-tight text-slate-700 text-center leading-tight">
                       {group.name}
                     </span>
                   </button>
@@ -760,7 +764,7 @@ export default function MarketView({
               })}
             </div>
           ) : (
-            <div className="grid grid-cols-4 gap-2 mb-2">
+            <div className="grid grid-cols-4 gap-1.5 mb-2">
               {activeGroupData?.subcategories.map((sub) => {
                 const SubIcon = sub.icon;
                 const isActive = selectedCategory === sub.name;
@@ -768,14 +772,14 @@ export default function MarketView({
                   <button
                     key={sub.name}
                     onClick={() => selectSubcategory(sub.name)}
-                    className={`flex flex-col items-center justify-center py-2 px-1.5 rounded-lg border transition-all cursor-pointer ${
+                    className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg border transition-all cursor-pointer ${
                       isActive
                         ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-[0_2px_8px_rgba(124,58,237,0.06)]'
                         : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
                     }`}
                   >
-                    <SubIcon className={`w-4 h-4 mb-1 ${isActive ? 'text-[#7C3AED]' : 'text-slate-600'}`} />
-                    <span className={`text-[10px] font-sans font-bold tracking-tight text-center leading-tight ${isActive ? 'text-[#7C3AED]' : 'text-slate-700'}`}>
+                    <SubIcon className={`w-3.5 h-3.5 mb-0.5 ${isActive ? 'text-[#7C3AED]' : 'text-slate-600'}`} />
+                    <span className={`text-[8px] font-sans font-bold tracking-tight text-center leading-tight ${isActive ? 'text-[#7C3AED]' : 'text-slate-700'}`}>
                       {sub.name}
                     </span>
                   </button>
@@ -790,12 +794,12 @@ export default function MarketView({
 
         {marketTab === 'supply' ? (
           <>
-            <h3 className="text-xs font-sans font-black text-slate-900 mb-3 tracking-wide uppercase">
+            <h3 className="text-[10px] font-sans font-black text-slate-900 mb-2 tracking-wide uppercase">
               {selectedCategory === 'Trending' ? 'Trending Products (6)' : `${selectedCategory} Products`} ({filteredProducts.length})
             </h3>
 
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-2 gap-3">
                 {filteredProducts.map((prod) => {
                   const ownListing = isOwnListing(prod);
                   return (
@@ -805,7 +809,7 @@ export default function MarketView({
                       className="bg-white border border-slate-100/90 rounded-lg overflow-hidden shadow-2xs cursor-pointer flex flex-col justify-between hover:border-slate-200 transition-all relative"
                     >
                       {ownListing && (
-                        <span className="absolute top-2 left-2 z-10 bg-slate-900/80 text-white text-[8px] font-sans font-black px-2 py-0.5 rounded-full tracking-wider backdrop-blur-xs">
+                        <span className="absolute top-1.5 left-1.5 z-10 bg-slate-900/80 text-white text-[7px] font-sans font-black px-1.5 py-0.5 rounded-full tracking-wider backdrop-blur-xs">
                           YOUR LISTING
                         </span>
                       )}
@@ -818,30 +822,30 @@ export default function MarketView({
                         />
                       </div>
 
-                      <div className="p-3 flex flex-col justify-between flex-1">
+                      <div className="p-2 flex flex-col justify-between flex-1">
                         <div>
-                          <h4 className="text-xs font-sans font-bold text-slate-900 leading-tight line-clamp-2">
+                          <h4 className="text-[10px] font-sans font-bold text-slate-900 leading-tight line-clamp-2">
                             {prod.title}
                           </h4>
 
-                          <div className="flex items-center gap-1 text-[10px] text-slate-400 font-medium mt-1">
-                            <Star className="w-3 h-3 fill-amber-400 stroke-amber-400" />
+                          <div className="flex items-center gap-0.5 text-[8px] text-slate-400 font-medium mt-0.5">
+                            <Star className="w-2.5 h-2.5 fill-amber-400 stroke-amber-400" />
                             <span className="font-bold text-slate-600">{prod.rating}</span>
                             <span className="text-slate-300">•</span>
                             <span>@{prod.sellerUsername}</span>
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between mt-2 pt-1">
-                          <span className="text-xs font-sans font-black text-slate-950">
+                        <div className="flex items-center justify-between mt-1.5 pt-0.5">
+                          <span className="text-[10px] font-sans font-black text-slate-950">
                             ₦{prod.price.toLocaleString()}
                           </span>
                           {ownListing ? (
                             <div
-                              className="w-7 h-7 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-xs"
+                              className="w-6 h-6 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-xs"
                               title="You can't buy your own listing"
                             >
-                              <Lock className="w-3 h-3" />
+                              <Lock className="w-2.5 h-2.5" />
                             </div>
                           ) : (
                             <button
@@ -849,9 +853,9 @@ export default function MarketView({
                                 e.stopPropagation();
                                 onAddToCart(prod);
                               }}
-                              className="w-7 h-7 bg-[#7C3AED] hover:bg-purple-700 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer shadow-xs"
+                              className="w-6 h-6 bg-[#7C3AED] hover:bg-purple-700 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer shadow-xs"
                             >
-                              <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
+                              <Plus className="w-3 h-3 stroke-[2.5]" />
                             </button>
                           )}
                         </div>
@@ -861,56 +865,56 @@ export default function MarketView({
                 })}
               </div>
             ) : (
-              <div className="text-center py-16 px-6 bg-slate-50/50 rounded-lg border border-dashed border-slate-150">
-                <ShoppingBag className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-                <p className="text-xs font-sans text-slate-500 font-bold">No products found under this category.</p>
+              <div className="text-center py-12 px-4 bg-slate-50/50 rounded-lg border border-dashed border-slate-150">
+                <ShoppingBag className="w-8 h-8 text-slate-300 mx-auto mb-1" />
+                <p className="text-[10px] font-sans text-slate-500 font-bold">No products found under this category.</p>
               </div>
             )}
           </>
         ) : (
           <>
-            <h3 className="text-xs font-sans font-black text-slate-900 mb-3 tracking-wide uppercase">
+            <h3 className="text-[10px] font-sans font-black text-slate-900 mb-2 tracking-wide uppercase">
               Buyer Demands ({filteredDemands.length})
             </h3>
 
             {filteredDemands.length > 0 ? (
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {filteredDemands.map((demand) => (
                   <div
                     key={demand.id}
                     onClick={() => setSelectedDemand(demand)}
-                    className="bg-white border border-slate-100 rounded-lg p-3 shadow-2xs hover:border-slate-200 transition-all flex gap-3 cursor-pointer"
+                    className="bg-white border border-slate-100 rounded-lg p-2 shadow-2xs hover:border-slate-200 transition-all flex gap-2 cursor-pointer"
                   >
                     <img
                       src={demand.image}
                       alt={demand.title}
-                      className="w-16 h-16 rounded-lg object-cover border border-slate-100 shrink-0"
+                      className="w-14 h-14 rounded-lg object-cover border border-slate-100 shrink-0"
                     />
 
                     <div className="flex-1 min-w-0 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center justify-between gap-1">
-                          <span className="text-[9px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-1.5 py-0.5 rounded">
+                          <span className="text-[8px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-1.5 py-0.5 rounded">
                             {demand.category}
                           </span>
-                          <span className="text-[10px] text-slate-400 font-medium">@{demand.buyerUsername}</span>
+                          <span className="text-[8px] text-slate-400 font-medium">@{demand.buyerUsername}</span>
                         </div>
-                        <h4 className="text-xs font-sans font-extrabold text-slate-900 truncate mt-1">
+                        <h4 className="text-[10px] font-sans font-extrabold text-slate-900 truncate mt-0.5">
                           {demand.title}
                         </h4>
-                        <p className="text-[10px] text-slate-400 line-clamp-1 mt-0.5 leading-snug">{demand.description}</p>
+                        <p className="text-[8px] text-slate-400 line-clamp-1 mt-0.5 leading-snug">{demand.description}</p>
                       </div>
 
-                      <div className="flex items-center justify-between mt-2 pt-1 border-t border-slate-50">
-                        <span className="text-xs font-black text-slate-950">
-                          Budget: ₦{demand.price.toLocaleString()}
+                      <div className="flex items-center justify-between mt-1 pt-0.5 border-t border-slate-50">
+                        <span className="text-[10px] font-black text-slate-950">
+                          ₦{demand.price.toLocaleString()}
                         </span>
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             onStartChatWithSeller(demand.buyerUsername, demand.buyerName);
                           }}
-                          className="text-[10px] font-sans font-bold text-white bg-[#7C3AED] hover:bg-purple-700 px-2.5 py-1 rounded-md transition-colors shadow-2xs"
+                          className="text-[8px] font-sans font-bold text-white bg-[#7C3AED] hover:bg-purple-700 px-2 py-0.5 rounded-md transition-colors shadow-2xs"
                         >
                           Send Offer
                         </button>
@@ -920,9 +924,9 @@ export default function MarketView({
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16 px-6 bg-slate-50/50 rounded-lg border border-dashed border-slate-150">
-                <Tag className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-                <p className="text-xs font-sans text-slate-500 font-bold">No demands found under this category.</p>
+              <div className="text-center py-12 px-4 bg-slate-50/50 rounded-lg border border-dashed border-slate-150">
+                <Tag className="w-8 h-8 text-slate-300 mx-auto mb-1" />
+                <p className="text-[10px] font-sans text-slate-500 font-bold">No demands found under this category.</p>
               </div>
             )}
           </>
