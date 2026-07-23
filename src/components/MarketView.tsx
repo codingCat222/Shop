@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Search, ShoppingCart, Star, Plus, Minus, Trash2, X,
   Flame, Store, Car, Home, Smartphone, Shirt, Wrench, MoreHorizontal,
   ShoppingBag, ArrowRight, Wallet, Eye, EyeOff, Heart, SlidersHorizontal, Tag,
-  ChevronLeft, Pencil, Check as CheckIcon, Zap, Gift, Cpu, Smartphone as PhoneIcon, Lock
+  ChevronLeft, Pencil, Check as CheckIcon, Zap, Gift, Cpu, Smartphone as PhoneIcon, Lock,
+  Percent, Clock, TrendingUp, Shield, Truck, Coffee, Headphones, Watch, Camera, Laptop, Package,
+  ChevronRight, Sparkles, Gem, Beer, Shirt as ShirtIcon, Wine, Headphones as HeadphoneIcon
 } from 'lucide-react';
 import { MarketProduct, UserProfile, CartItem } from '../types';
 import { mockProducts } from '../mockData';
@@ -63,6 +65,130 @@ const categoryGroups: CategoryGroup[] = [
   }
 ];
 
+// Carousel messages
+const carouselMessages = [
+  { text: 'ShopAffairShop', subtext: 'Your trusted marketplace', icon: Store },
+  { text: 'Flash Sale Live!', subtext: 'Up to 40% off', icon: Zap },
+  { text: 'New Arrivals', subtext: 'Check out latest products', icon: Sparkles },
+  { text: 'Premium Deals', subtext: 'Exclusive offers', icon: Gem },
+  { text: 'Fast Delivery', subtext: 'Get it in 24hrs', icon: Truck },
+  { text: 'Secure Escrow', subtext: '100% protected', icon: Shield }
+];
+
+// Hot Deals Carousel Data
+const hotDeals = [
+  {
+    id: 'hot_1',
+    title: 'GET UP TO 25% OFF',
+    subtitle: 'Limited time offer. T&Cs apply',
+    discount: '25%',
+    bgGradient: 'from-purple-600 via-purple-700 to-indigo-700',
+    tag: 'HOT DEAL',
+    tag2: 'LIMITED TIME',
+    timeLeft: '3h 45m',
+    icon: Flame,
+    images: [
+      'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=100'
+    ]
+  },
+  {
+    id: 'hot_2',
+    title: 'FLASH SALE 40% OFF',
+    subtitle: 'Electronics & Gadgets',
+    discount: '40%',
+    bgGradient: 'from-red-600 via-rose-700 to-pink-700',
+    tag: 'FLASH SALE',
+    tag2: 'TODAY ONLY',
+    timeLeft: '1h 30m',
+    icon: Zap,
+    images: [
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&q=80&w=100'
+    ]
+  },
+  {
+    id: 'hot_3',
+    title: 'BUY 1 GET 1 FREE',
+    subtitle: 'Selected items only',
+    discount: '50%',
+    bgGradient: 'from-emerald-600 via-teal-700 to-cyan-700',
+    tag: 'BOGO OFFER',
+    tag2: 'LIMITED STOCK',
+    timeLeft: '5h 20m',
+    icon: Gift,
+    images: [
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=100'
+    ]
+  },
+  {
+    id: 'hot_4',
+    title: 'PREMIUM DEALS',
+    subtitle: 'Luxury items at best prices',
+    discount: '30%',
+    bgGradient: 'from-amber-600 via-orange-700 to-yellow-700',
+    tag: 'PREMIUM',
+    tag2: 'EXCLUSIVE',
+    timeLeft: '2h 15m',
+    icon: Gem,
+    images: [
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&q=80&w=100',
+      'https://images.unsplash.com/photo-1610945265064-0e34e4d213b5?auto=format&fit=crop&q=80&w=100'
+    ]
+  }
+];
+
+// Feature Cards Carousel Data - ALL 4 CARDS
+const featureCards = [
+  {
+    id: 'feature_1',
+    title: 'UP TO 35%',
+    subtitle: '100% no-sugar',
+    brand: 'WILLIAMS LAWSON',
+    product: 'Coca-Cola',
+    bgGradient: 'from-emerald-500 to-emerald-700',
+    tag: 'UP TO',
+    buttonText: 'SHOP NOW',
+    icon: Wine
+  },
+  {
+    id: 'feature_2',
+    title: 'JAMESON',
+    subtitle: 'BLACK BARREL',
+    discount: '25%',
+    bgGradient: 'from-amber-500 to-orange-600',
+    tag: 'PREMIUM',
+    buttonText: 'BUY NOW',
+    icon: Beer
+  },
+  {
+    id: 'feature_3',
+    title: 'UP TO 30%',
+    subtitle: 'Smartphones & Tablets',
+    brand: 'TECH SALE',
+    product: 'Samsung • Apple',
+    bgGradient: 'from-blue-500 to-purple-600',
+    tag: 'TECH DEAL',
+    buttonText: 'SHOP NOW',
+    icon: PhoneIcon
+  },
+  {
+    id: 'feature_4',
+    title: 'FASHION SALE',
+    subtitle: 'Summer collection',
+    discount: '40%',
+    bgGradient: 'from-pink-500 to-rose-600',
+    tag: 'TRENDING',
+    buttonText: 'VIEW ALL',
+    icon: ShirtIcon
+  }
+];
+
 export default function MarketView({
   activeProfile,
   onInitiateVerification,
@@ -86,11 +212,36 @@ export default function MarketView({
   const [accountNumber, setAccountNumber] = useState('2034785521');
   const [editingAccount, setEditingAccount] = useState(false);
   const [accountDraft, setAccountDraft] = useState(accountNumber);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [hotDealSlide, setHotDealSlide] = useState(0);
+  const [featureSlide, setFeatureSlide] = useState(0);
+
+  // Auto-slide carousel for header
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselMessages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-slide carousel for hot deals
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHotDealSlide((prev) => (prev + 1) % hotDeals.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-slide carousel for feature cards
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFeatureSlide((prev) => (prev + 1) % Math.ceil(featureCards.length / 2));
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   const isLoggedIn = activeProfile && activeProfile.verificationStatus !== 'GUEST';
 
-  // A user can list products, but can't be the buyer on their own listing —
-  // escrow requires two distinct parties, otherwise the pickup-code flow has no meaning.
   const isOwnListing = (product: MarketProduct) =>
     !!activeProfile && activeProfile.username === product.sellerUsername;
 
@@ -202,10 +353,29 @@ export default function MarketView({
     setEditingAccount(false);
   };
 
-  return (
-    <div className="flex-1 flex flex-col bg-white h-full overflow-hidden pb-24 relative font-sans">
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
 
-      <div className="px-4 pt-4 pb-2 sticky top-0 bg-white z-10 border-b border-slate-50">
+  const goToHotDealSlide = (index: number) => {
+    setHotDealSlide(index);
+  };
+
+  const goToFeatureSlide = (index: number) => {
+    setFeatureSlide(index);
+  };
+
+  const getVisibleFeatureCards = () => {
+    const start = featureSlide * 2;
+    return featureCards.slice(start, start + 2);
+  };
+
+  const totalFeatureSlides = Math.ceil(featureCards.length / 2);
+
+  return (
+    <div className="flex-1 flex flex-col bg-[#F8F9FC] h-full overflow-hidden pb-24 relative font-sans">
+
+      <div className="px-4 pt-4 pb-2 sticky top-0 bg-[#F8F9FC] z-10 border-b border-slate-50">
         {isLoggedIn ? (
           <div className="flex items-center justify-between mb-3 gap-2">
             <div className="flex items-center gap-2 bg-[#F5F3FF] border border-[#7C3AED]/10 rounded-lg px-2.5 py-1.5 flex-1 max-w-[70%] shadow-[0_2px_8px_rgba(124,58,237,0.05)]">
@@ -253,14 +423,51 @@ export default function MarketView({
           </div>
         ) : (
           <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 id="shopaffair-shop-title" className="text-xl font-sans font-black text-slate-950 tracking-tight leading-none">ShopAffairShop</h1>
-              <p className="text-[11px] text-slate-400 font-medium mt-1">Access our open marketplace</p>
+            <div className="flex-1">
+              {/* Carousel Header - replaces static title */}
+              <div className="relative h-12 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -30, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="absolute inset-0 flex flex-col justify-center"
+                  >
+                    <div className="flex items-center gap-2">
+                      {(() => {
+                        const Icon = carouselMessages[currentSlide].icon;
+                        return <Icon className="w-5 h-5 text-purple-600" />;
+                      })()}
+                      <h1 className="text-xl font-sans font-black text-slate-950 tracking-tight leading-none">
+                        {carouselMessages[currentSlide].text}
+                      </h1>
+                    </div>
+                    <p className="text-[11px] text-slate-400 font-medium mt-0.5">
+                      {carouselMessages[currentSlide].subtext}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              
+              {/* Carousel dots */}
+              <div className="flex gap-1 mt-1">
+                {carouselMessages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      index === currentSlide ? 'w-4 bg-[#7C3AED]' : 'w-1.5 bg-slate-300'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
 
             <button
               onClick={() => setCartOpen(true)}
-              className="w-10 h-10 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer"
+              className="w-10 h-10 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors relative cursor-pointer ml-2"
             >
               <ShoppingCart className="w-4 h-4" />
               {cartCount > 0 && (
@@ -307,84 +514,178 @@ export default function MarketView({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={isLoggedIn ? "Search chats, trades..." : "Search materials, categories ..."}
-              className="w-full pl-10 pr-4 py-2.5 bg-[#F4F4F6] border-none rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:bg-white transition-all"
+              placeholder={isLoggedIn ? "Search products, categories..." : "Search materials, categories ..."}
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-lg font-sans text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] transition-all"
             />
             <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
           </div>
           {isLoggedIn && (
-            <button className="w-10 h-10 rounded-lg bg-[#F4F4F6] flex items-center justify-center text-slate-600 hover:bg-slate-200 shrink-0 transition-colors cursor-pointer">
+            <button className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 shrink-0 transition-colors cursor-pointer">
               <SlidersHorizontal className="w-4.5 h-4.5" />
             </button>
           )}
         </div>
 
-        {isLoggedIn && (
-          <div className="flex gap-3 overflow-x-auto no-scrollbar pb-4 pt-1 -mx-4 px-4 scroll-smooth">
-            <div className="relative w-[75%] shrink-0 rounded-lg bg-[#5B21B6] p-4 text-white overflow-hidden shadow-sm border border-[#7C3AED]/20 flex flex-col justify-between h-28">
-              <span className="absolute top-2.5 left-2.5 bg-rose-500 text-white text-[8px] font-sans font-black px-1.5 py-0.5 rounded tracking-wider">
-                SALE
-              </span>
-              <div className="flex justify-between items-end h-full w-full">
-                <div className="max-w-[65%] pt-3">
-                  <h2 className="text-sm font-sans font-black text-white tracking-tight leading-none">Flash Sale !!!</h2>
-                  <p className="text-[10px] text-white/90 font-semibold mt-1 leading-tight">Up to 40% off Electronics</p>
-                </div>
-                <div className="relative w-14 h-14 shrink-0 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-white/10 rounded-full blur-xs" />
-                  <img
-                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=150"
-                    alt="Electronics"
-                    referrerPolicy="no-referrer"
-                    className="w-12 h-12 object-cover rounded-lg relative z-10 rotate-6 shadow-md border border-white/20"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="relative w-[75%] shrink-0 rounded-lg bg-[#7C3AED] p-4 text-white overflow-hidden shadow-sm border border-[#8B5CF6]/20 flex flex-col justify-between h-28">
-              <span className="absolute top-2.5 left-2.5 bg-emerald-500 text-white text-[8px] font-sans font-black px-1.5 py-0.5 rounded tracking-wider">
-                NEW
-              </span>
-              <div className="flex justify-between items-end h-full w-full">
-                <div className="max-w-[65%] pt-3">
-                  <h2 className="text-sm font-sans font-black text-white tracking-tight leading-none">New Arrivals</h2>
-                  <p className="text-[10px] text-white/90 font-semibold mt-1 leading-tight">Check it out now</p>
-                </div>
-                <div className="relative w-14 h-14 shrink-0 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-white/10 rounded-full blur-xs" />
-                  <img
-                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=150"
-                    alt="Sneakers"
-                    referrerPolicy="no-referrer"
-                    className="w-12 h-12 object-cover rounded-lg relative z-10 -rotate-6 shadow-md border border-white/20"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setQuickTransferOpen(true)}
-              className="relative w-[75%] shrink-0 rounded-lg bg-gradient-to-br from-emerald-600 to-emerald-700 p-4 text-white overflow-hidden shadow-sm border border-emerald-400/20 flex flex-col justify-between h-28 text-left cursor-pointer"
-            >
-              <span className="absolute top-2.5 left-2.5 bg-white/20 text-white text-[8px] font-sans font-black px-1.5 py-0.5 rounded tracking-wider">
-                FAST
-              </span>
-              <div className="flex justify-between items-end h-full w-full">
-                <div className="max-w-[70%] pt-3">
-                  <h2 className="text-sm font-sans font-black text-white tracking-tight leading-none">Quick Transfer</h2>
-                  <p className="text-[10px] text-white/90 font-semibold mt-1 leading-tight">Airtime, Data & Transfers</p>
-                </div>
-                <div className="relative w-14 h-14 shrink-0 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-white/10 rounded-full blur-xs" />
-                  <div className="w-11 h-11 rounded-lg bg-white/15 border border-white/25 flex items-center justify-center relative z-10">
-                    <Zap className="w-5 h-5 text-white" />
+        {/* WhatsApp-style Ads Section */}
+        <div className="mb-4">
+          {/* Hot Deals Carousel - Main Banner */}
+          <div className="relative overflow-hidden rounded-xl shadow-lg border border-purple-400/20 mb-3">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={hotDealSlide}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className={`relative bg-gradient-to-r ${hotDeals[hotDealSlide].bgGradient} p-0`}
+              >
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800')] opacity-10 bg-cover bg-center" />
+                <div className="relative p-4">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        {(() => {
+                          const Icon = hotDeals[hotDealSlide].icon;
+                          return <Icon className="w-3 h-3 text-amber-400" />;
+                        })()}
+                        <span className="bg-amber-400 text-black text-[8px] font-black px-2 py-0.5 rounded-full tracking-wider">
+                          {hotDeals[hotDealSlide].tag}
+                        </span>
+                        <span className="bg-white/20 text-white text-[8px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                          {hotDeals[hotDealSlide].tag2}
+                        </span>
+                      </div>
+                      <h2 className="text-2xl font-black text-white leading-tight tracking-tight">
+                        {hotDeals[hotDealSlide].title}
+                      </h2>
+                      <p className="text-xs text-white/80 font-semibold mt-1">{hotDeals[hotDealSlide].subtitle}</p>
+                      <div className="flex items-center gap-3 mt-2">
+                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
+                          <Clock className="w-3 h-3 text-amber-400" />
+                          <span className="text-[10px] text-white font-bold">Ends in {hotDeals[hotDealSlide].timeLeft}</span>
+                        </div>
+                        <button className="bg-white text-purple-700 text-[10px] font-black px-3 py-1 rounded-full shadow-lg hover:bg-purple-50 transition-colors">
+                          SHOP NOW →
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex -space-x-2">
+                      {hotDeals[hotDealSlide].images.map((img, i) => (
+                        <div key={i} className="w-12 h-12 rounded-lg border-2 border-white/30 overflow-hidden shadow-md -ml-2 first:ml-0">
+                          <img src={img} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Hot Deals Navigation Dots */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {hotDeals.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToHotDealSlide(index)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === hotDealSlide ? 'w-5 bg-white' : 'w-1.5 bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Hot Deals Arrows */}
+            <button
+              onClick={() => goToHotDealSlide((hotDealSlide - 1 + hotDeals.length) % hotDeals.length)}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => goToHotDealSlide((hotDealSlide + 1) % hotDeals.length)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all z-10"
+            >
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
-        )}
+
+          {/* Feature Cards Carousel - ALL 4 FEATURE CARDS */}
+          <div className="relative overflow-hidden mb-3">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={featureSlide}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="grid grid-cols-2 gap-2"
+              >
+                {getVisibleFeatureCards().map((card) => {
+                  const Icon = card.icon;
+                  return (
+                    <div
+                      key={card.id}
+                      className={`relative bg-gradient-to-br ${card.bgGradient} rounded-xl overflow-hidden p-3 shadow-md border border-white/20`}
+                    >
+                      <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full blur-xl" />
+                      <div className="relative">
+                        <span className="text-[8px] font-black text-white bg-white/20 px-1.5 py-0.5 rounded backdrop-blur-sm">{card.tag}</span>
+                        <h3 className="text-xl font-black text-white leading-none mt-1">{card.title}</h3>
+                        {card.subtitle && (
+                          <p className="text-[10px] text-white/90 font-semibold">{card.subtitle}</p>
+                        )}
+                        {card.brand && (
+                          <div className="flex items-center gap-1 mt-1">
+                            <span className="text-[8px] text-white/70">{card.brand}</span>
+                            <span className="text-[8px] text-white/90 font-bold">{card.product}</span>
+                          </div>
+                        )}
+                        {card.discount && (
+                          <div className="flex items-center gap-1 mt-1">
+                            <span className="text-[8px] text-white/70">UP TO</span>
+                            <span className="text-lg font-black text-white leading-none">{card.discount}</span>
+                            <span className="text-[8px] text-white/70">OFF</span>
+                          </div>
+                        )}
+                        <Icon className="w-5 h-5 text-white/80 mt-1" />
+                        <button className="mt-1.5 bg-white/20 hover:bg-white/30 text-white text-[8px] font-black px-2 py-0.5 rounded-full backdrop-blur-sm transition-colors">
+                          {card.buttonText}
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Feature Cards Navigation Dots */}
+            <div className="flex justify-center gap-1.5 mt-2">
+              {Array.from({ length: totalFeatureSlides }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToFeatureSlide(index)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === featureSlide ? 'w-4 bg-purple-600' : 'w-1.5 bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Feature Cards Arrows */}
+            <button
+              onClick={() => goToFeatureSlide((featureSlide - 1 + totalFeatureSlides) % totalFeatureSlides)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -ml-1 z-10"
+            >
+              <ChevronLeft className="w-3 h-3" />
+            </button>
+            <button
+              onClick={() => goToFeatureSlide((featureSlide + 1) % totalFeatureSlides)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-white/90 hover:bg-white rounded-full shadow-md flex items-center justify-center text-slate-600 hover:text-purple-600 transition-all -mr-1 z-10"
+            >
+              <ChevronRight className="w-3 h-3" />
+            </button>
+          </div>
+        </div>
 
         {isLoggedIn && (
           <div className="bg-[#F4F4F6] p-1 rounded-lg flex w-full mb-4">
@@ -433,7 +734,7 @@ export default function MarketView({
                 className={`flex flex-col items-center justify-center py-2 px-1.5 rounded-lg border transition-all cursor-pointer ${
                   selectedCategory === 'Trending' && !activeGroup
                     ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-[0_2px_8px_rgba(124,58,237,0.06)]'
-                    : 'bg-[#F4F4F6] border-transparent text-[#1A1A1A] hover:bg-slate-100'
+                    : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
                 }`}
               >
                 <Flame className={`w-4 h-4 mb-1 ${selectedCategory === 'Trending' ? 'text-[#7C3AED]' : 'text-slate-600'}`} />
@@ -448,7 +749,7 @@ export default function MarketView({
                   <button
                     key={group.name}
                     onClick={() => openGroup(group.name)}
-                    className="flex flex-col items-center justify-center py-2 px-1.5 rounded-lg border border-transparent bg-[#F4F4F6] text-[#1A1A1A] hover:bg-slate-100 transition-all cursor-pointer"
+                    className="flex flex-col items-center justify-center py-2 px-1.5 rounded-lg border border-slate-100 bg-white text-[#1A1A1A] hover:bg-slate-50 transition-all cursor-pointer"
                   >
                     <GroupIcon className="w-4 h-4 mb-1 text-slate-600" />
                     <span className="text-[10px] font-sans font-bold tracking-tight text-slate-700 text-center leading-tight">
@@ -470,7 +771,7 @@ export default function MarketView({
                     className={`flex flex-col items-center justify-center py-2 px-1.5 rounded-lg border transition-all cursor-pointer ${
                       isActive
                         ? 'bg-[#F5F3FF] border-[#7C3AED] text-[#7C3AED] shadow-[0_2px_8px_rgba(124,58,237,0.06)]'
-                        : 'bg-[#F4F4F6] border-transparent text-[#1A1A1A] hover:bg-slate-100'
+                        : 'bg-white border-slate-100 text-[#1A1A1A] hover:bg-slate-50'
                     }`}
                   >
                     <SubIcon className={`w-4 h-4 mb-1 ${isActive ? 'text-[#7C3AED]' : 'text-slate-600'}`} />

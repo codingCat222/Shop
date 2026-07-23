@@ -120,6 +120,119 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         </div>
       </motion.div>
 
+      {/* Market Actions */}
+      <div className="px-4 mt-6">
+        <h3 className="text-xs font-sans font-bold uppercase tracking-wider text-slate-400 mb-3">Market Actions</h3>
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
+          className="grid grid-cols-2 gap-3"
+        >
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+            whileHover={{ y: -2 }}
+            onClick={() => onNavigateTab('trade')}
+            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center justify-between cursor-pointer transition-colors"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-purple-600 text-white flex items-center justify-center shrink-0">
+                <ArrowUpRight className="w-5.5 h-5.5" />
+              </div>
+              <div>
+                <span className="block text-xs font-sans font-bold text-slate-800">Trade</span>
+                <span className="text-[10px] font-sans text-slate-400">Create & manage escrow</span>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300" />
+          </motion.div>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+            whileHover={{ y: -2 }}
+            onClick={onOpenStoreUpgrade}
+            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center justify-between cursor-pointer transition-colors"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-purple-600 text-white flex items-center justify-center shrink-0">
+                <Store className="w-5.5 h-5.5" />
+              </div>
+              <div>
+                <span className="block text-xs font-sans font-bold text-slate-800">My Store</span>
+                <span className="text-[10px] font-sans text-slate-400">List merchant items</span>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300" />
+          </motion.div>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+            whileHover={{ y: -2 }}
+            onClick={() => onNavigateTab('chat')}
+            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center justify-between cursor-pointer transition-colors"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-purple-600 text-white flex items-center justify-center shrink-0">
+                <MessageSquare className="w-5.5 h-5.5" />
+              </div>
+              <div>
+                <span className="block text-xs font-sans font-bold text-slate-800">Chats</span>
+                <span className="text-[10px] font-sans text-slate-400">Direct user channels</span>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300" />
+          </motion.div>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+            whileHover={{ y: -2 }}
+            onClick={() => onNavigateTab('trade')}
+            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center justify-between cursor-pointer transition-colors"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-purple-600 text-white flex items-center justify-center shrink-0">
+                <Clock className="w-5.5 h-5.5" />
+              </div>
+              <div>
+                <span className="block text-xs font-sans font-bold text-slate-800">Pending Trades</span>
+                <span className="text-[10px] font-sans text-slate-400">Awaiting clearance</span>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300" />
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Refer & Earn */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="px-4 mt-6"
+      >
+        <motion.div
+          whileHover={{ scale: 1.01 }}
+          onClick={() => setReferModalOpen(true)}
+          className="bg-purple-600 text-white rounded-lg p-4 flex items-center justify-between cursor-pointer relative overflow-hidden shadow-md hover:opacity-95 transition-opacity"
+        >
+          <div className="absolute top-2 right-12 w-8 h-8 bg-purple-500 rounded-full opacity-30" />
+          <div className="absolute bottom-1 right-20 w-4 h-4 bg-purple-400 rounded-full opacity-20" />
+
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white">
+              <Gift className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="block text-sm font-sans font-bold">Refer & Earn</span>
+              <span className="text-xs font-sans text-purple-200">Get ₦500 for each friend invited!</span>
+            </div>
+          </div>
+          <ChevronRight className="w-5 h-5 text-purple-200" />
+        </motion.div>
+      </motion.div>
+
+      {/* Quick Actions */}
       <motion.div
         initial="hidden"
         animate="show"
@@ -178,104 +291,7 @@ export default function HomeView({ activeProfile, onNavigateTab, onRoleSwitch, o
         </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="px-4 mt-6"
-      >
-        <motion.div
-          whileHover={{ scale: 1.01 }}
-          onClick={() => setReferModalOpen(true)}
-          className="bg-purple-600 text-white rounded-lg p-4 flex items-center justify-between cursor-pointer relative overflow-hidden shadow-md hover:opacity-95 transition-opacity"
-        >
-          <div className="absolute top-2 right-12 w-8 h-8 bg-purple-500 rounded-full opacity-30" />
-          <div className="absolute bottom-1 right-20 w-4 h-4 bg-purple-400 rounded-full opacity-20" />
-
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white">
-              <Gift className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="block text-sm font-sans font-bold">Refer & Earn</span>
-              <span className="text-xs font-sans text-purple-200">Get ₦500 for each friend invited!</span>
-            </div>
-          </div>
-          <ChevronRight className="w-5 h-5 text-purple-200" />
-        </motion.div>
-      </motion.div>
-
-      <div className="px-4 mt-6">
-        <h3 className="text-xs font-sans font-bold uppercase tracking-wider text-slate-400 mb-3">Market Actions</h3>
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-40px' }}
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
-          className="grid grid-cols-2 gap-3"
-        >
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
-            onClick={() => onNavigateTab('trade')}
-            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center gap-3.5 cursor-pointer transition-colors"
-          >
-            <div className="w-11 h-11 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-              <ArrowUpRight className="w-5.5 h-5.5" />
-            </div>
-            <div>
-              <span className="block text-xs font-sans font-bold text-slate-800">Trade</span>
-              <span className="text-[10px] font-sans text-slate-400">Create & manage escrow</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
-            onClick={onOpenStoreUpgrade}
-            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center gap-3.5 cursor-pointer transition-colors"
-          >
-            <div className="w-11 h-11 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-              <Store className="w-5.5 h-5.5" />
-            </div>
-            <div>
-              <span className="block text-xs font-sans font-bold text-slate-800">My Store</span>
-              <span className="text-[10px] font-sans text-slate-400">List merchant items</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
-            onClick={() => onNavigateTab('chat')}
-            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center gap-3.5 cursor-pointer transition-colors"
-          >
-            <div className="w-11 h-11 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-              <MessageSquare className="w-5.5 h-5.5" />
-            </div>
-            <div>
-              <span className="block text-xs font-sans font-bold text-slate-800">Chats</span>
-              <span className="text-[10px] font-sans text-slate-400">Direct user channels</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            whileHover={{ y: -2 }}
-            onClick={() => onNavigateTab('trade')}
-            className="p-4 bg-white border border-slate-100 hover:border-purple-200 shadow-xs hover:shadow-sm rounded-lg flex items-center gap-3.5 cursor-pointer transition-colors"
-          >
-            <div className="w-11 h-11 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-              <Clock className="w-5.5 h-5.5" />
-            </div>
-            <div>
-              <span className="block text-xs font-sans font-bold text-slate-800">Pending Trades</span>
-              <span className="text-[10px] font-sans text-slate-400">Awaiting clearance</span>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
+      {/* Market Top Products */}
       <div className="px-4 mt-6">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-xs font-sans font-bold uppercase tracking-wider text-slate-400">Market Top Products</h3>
