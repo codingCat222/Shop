@@ -75,7 +75,7 @@ const carouselMessages = [
   { text: 'Secure Escrow', subtext: '100% protected', icon: Shield }
 ];
 
-// Hot Deals Carousel Data - FULL VERSION
+// Hot Deals Carousel Data - COMPACT VERSION
 const hotDeals = [
   {
     id: 'hot_1',
@@ -312,10 +312,7 @@ export default function MarketView({
       <div className="px-4 pt-4 pb-2 sticky top-0 bg-[#F8F9FC] z-10 border-b border-slate-50">
         {isLoggedIn ? (
           <div className="flex items-center justify-between mb-2 gap-2">
-            <div className="flex items-center gap-2 bg-[#F5F3FF] border border-[#7C3AED]/10 rounded-lg px-2 py-1 flex-1 max-w-[70%] shadow-md">
-              <div className="w-6 h-6 rounded-lg bg-[#F5F3FF] border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] shrink-0">
-                <Wallet className="w-3 h-3" />
-              </div>
+            <div className="flex items-center gap-2 flex-1 max-w-[70%]">
               <div className="flex-1 min-w-0">
                 <span className="block text-[8px] font-sans font-semibold text-slate-400 tracking-wide uppercase leading-none">Wallet Balance</span>
                 <div className="flex items-center gap-1 mt-0.5">
@@ -431,9 +428,9 @@ export default function MarketView({
           )}
         </div>
 
-        {/* ONLY HOT DEALS CAROUSEL - LOWER ADS REMOVED */}
+        {/* ONLY HOT DEALS CAROUSEL - REDUCED HEIGHT */}
         <div className="mb-3">
-          {/* Hot Deals Carousel - FULL VERSION */}
+          {/* Hot Deals Carousel - COMPACT VERSION */}
           <div className="relative overflow-hidden rounded-xl shadow-lg border border-purple-400/20">
             <AnimatePresence mode="wait">
               <motion.div
@@ -445,38 +442,38 @@ export default function MarketView({
                 className={`relative bg-gradient-to-r ${hotDeals[hotDealSlide].bgGradient} p-0`}
               >
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800')] opacity-10 bg-cover bg-center" />
-                <div className="relative p-4">
+                <div className="relative p-2.5">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex items-center gap-1.5 mb-0.5">
                         {(() => {
                           const Icon = hotDeals[hotDealSlide].icon;
-                          return <Icon className="w-3 h-3 text-amber-400" />;
+                          return <Icon className="w-2 h-2 text-amber-400" />;
                         })()}
-                        <span className="bg-amber-400 text-black text-[8px] font-black px-2 py-0.5 rounded-full tracking-wider">
+                        <span className="bg-amber-400 text-black text-[6px] font-black px-1.5 py-0.5 rounded-full tracking-wider">
                           {hotDeals[hotDealSlide].tag}
                         </span>
-                        <span className="bg-white/20 text-white text-[8px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">
+                        <span className="bg-white/20 text-white text-[6px] font-bold px-1.5 py-0.5 rounded-full backdrop-blur-sm">
                           {hotDeals[hotDealSlide].tag2}
                         </span>
                       </div>
-                      <h2 className="text-2xl font-black text-white leading-tight tracking-tight">
+                      <h2 className="text-base font-black text-white leading-tight tracking-tight">
                         {hotDeals[hotDealSlide].title}
                       </h2>
-                      <p className="text-xs text-white/80 font-semibold mt-1">{hotDeals[hotDealSlide].subtitle}</p>
-                      <div className="flex items-center gap-3 mt-2">
-                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/10">
-                          <Clock className="w-3 h-3 text-amber-400" />
-                          <span className="text-[10px] text-white font-bold">Ends in {hotDeals[hotDealSlide].timeLeft}</span>
+                      <p className="text-[8px] text-white/80 font-semibold mt-0.5">{hotDeals[hotDealSlide].subtitle}</p>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-1.5 py-0.5 rounded-full border border-white/10">
+                          <Clock className="w-2 h-2 text-amber-400" />
+                          <span className="text-[7px] text-white font-bold">Ends in {hotDeals[hotDealSlide].timeLeft}</span>
                         </div>
-                        <button className="bg-white text-purple-700 text-[10px] font-black px-3 py-1 rounded-full shadow-lg hover:bg-purple-50 transition-colors">
+                        <button className="bg-white text-purple-700 text-[7px] font-black px-2 py-0.5 rounded-full shadow-lg hover:bg-purple-50 transition-colors">
                           SHOP NOW →
                         </button>
                       </div>
                     </div>
-                    <div className="flex -space-x-2">
-                      {hotDeals[hotDealSlide].images.map((img, i) => (
-                        <div key={i} className="w-12 h-12 rounded-lg border-2 border-white/30 overflow-hidden shadow-md -ml-2 first:ml-0">
+                    <div className="flex -space-x-1.5">
+                      {hotDeals[hotDealSlide].images.slice(0, 2).map((img, i) => (
+                        <div key={i} className="w-8 h-8 rounded-lg border-2 border-white/30 overflow-hidden shadow-md -ml-1.5 first:ml-0">
                           <img src={img} alt="" className="w-full h-full object-cover" />
                         </div>
                       ))}
@@ -485,10 +482,7 @@ export default function MarketView({
                 </div>
               </motion.div>
             </AnimatePresence>
-            {/* NO DOTS - REMOVED */}
-            {/* NO ARROWS - REMOVED */}
           </div>
-          {/* LOWER ADS (FEATURE CARDS) - COMPLETELY REMOVED */}
         </div>
 
         {isLoggedIn && (
