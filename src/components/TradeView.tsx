@@ -247,7 +247,7 @@ export default function TradeView({ trades, activeProfile, onCreateTrade, onUpda
                   tradeType === TradeType.SUPPLY ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500'
                 }`}
               >
-                Market (Supply)
+                Purchase Order
               </button>
               <button
                 type="button"
@@ -256,18 +256,18 @@ export default function TradeView({ trades, activeProfile, onCreateTrade, onUpda
                   tradeType === TradeType.REQUEST ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500'
                 }`}
               >
-                Demands (Requests)
+                Sales Order
               </button>
             </motion.div>
 
             <motion.div
               variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
-              className="grid grid-cols-2 gap-2 bg-slate-100/70 p-1.5 rounded-lg border border-slate-200/40"
+              className="grid grid-cols-3 gap-2 bg-slate-100/70 p-1.5 rounded-lg border border-slate-200/40"
             >
               <button
                 type="button"
                 onClick={() => setTradeCategory(TradeCategory.PHYSICAL)}
-                className={`py-2 text-xs font-sans font-bold rounded-md transition-all cursor-pointer ${
+                className={`py-2 text-[10px] font-sans font-bold rounded-md transition-all cursor-pointer ${
                   tradeCategory === TradeCategory.PHYSICAL ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500'
                 }`}
               >
@@ -276,11 +276,20 @@ export default function TradeView({ trades, activeProfile, onCreateTrade, onUpda
               <button
                 type="button"
                 onClick={() => setTradeCategory(TradeCategory.DIGITAL)}
-                className={`py-2 text-xs font-sans font-bold rounded-md transition-all cursor-pointer ${
+                className={`py-2 text-[10px] font-sans font-bold rounded-md transition-all cursor-pointer ${
                   tradeCategory === TradeCategory.DIGITAL ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500'
                 }`}
               >
                 Digital Asset
+              </button>
+              <button
+                type="button"
+                onClick={() => setTradeCategory(TradeCategory.SERVICE)}
+                className={`py-2 text-[10px] font-sans font-bold rounded-md transition-all cursor-pointer ${
+                  tradeCategory === TradeCategory.SERVICE ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500'
+                }`}
+              >
+                Service
               </button>
             </motion.div>
 

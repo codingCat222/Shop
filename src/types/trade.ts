@@ -5,7 +5,9 @@ export enum TradeType {
 
 export enum TradeCategory {
   PHYSICAL = 'Physical Product',
-  DIGITAL = 'Digital Asset'
+  DIGITAL = 'Digital Asset',
+  SERVICE = 'SERVICE' 
+  
 }
 
 export enum EscrowStatus {
@@ -43,4 +45,5 @@ export interface TradeItem {
   pickupAttempts?: number;
  
 buyerUsername?: string;
+
 }

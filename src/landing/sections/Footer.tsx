@@ -150,7 +150,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-5xl mx-auto px-6 pt-14 pb-10 grid grid-cols-1 md:grid-cols-[1.3fr_1fr_1fr_1fr] gap-10 text-left">
         <div className="space-y-5">
           <div className="flex items-center gap-2.5">
-            <img src="/Image/logo.png" alt="ShopFair logo" className="w-9 h-9 object-contain" />
+            <img src="/Image/logo.png" alt="ShopAffair logo" className="w-9 h-9 object-contain" />
             <span className="font-display font-black tracking-tight text-lg text-white">
               Shop<span className="text-green-600">Affair</span>
             </span>
@@ -194,7 +194,7 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-5xl mx-auto px-6 pb-10">
-        <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="rounded-lg bg-white/5 border border-white/10 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h4 className="text-xs font-bold text-white">Get settlement updates</h4>
             <p className="text-[11px] text-slate-400 mt-1">One email a month. Escrow policy changes, no spam.</p>
@@ -206,13 +206,13 @@ export const Footer: React.FC = () => {
             <input
               type="email"
               placeholder="you@email.com"
-              className="flex-1 sm:w-56 px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-400/60"
+              className="flex-1 sm:w-56 px-3.5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-400/60"
             />
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               type="submit"
-              className="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 shrink-0"
+              className="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 shrink-0"
             >
               Subscribe <ArrowUpRight className="w-3.5 h-3.5" />
             </motion.button>
